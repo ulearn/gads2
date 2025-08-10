@@ -1,0 +1,1006 @@
+{
+  "Afghanistan": {
+    "code": "AF",
+    "territory": "Unsupported Territory"
+  },
+  "Åland Islands": {
+    "code": "AX",
+    "territory": "Unsupported Territory"
+  },
+  "Albania": {
+    "code": "AL",
+    "territory": "Non-EU (VBD)"
+  },
+  "Algeria": {
+    "code": "DZ",
+    "territory": "Non-EU (VBD)"
+  },
+  "American Samoa": {
+    "code": "AS",
+    "territory": "Unsupported Territory"
+  },
+  "Andorra": {
+    "code": "AD",
+    "territory": "EU"
+  },
+  "Angola": {
+    "code": "AO",
+    "territory": "Unsupported Territory"
+  },
+  "Anguilla": {
+    "code": "AI",
+    "territory": "Unsupported Territory"
+  },
+  "Antarctica": {
+    "code": "AQ",
+    "territory": "Unsupported Territory"
+  },
+  "Antigua and Barbuda": {
+    "code": "AG",
+    "territory": "Unsupported Territory"
+  },
+  "Argentina": {
+    "code": "AR",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Armenia": {
+    "code": "AM",
+    "territory": "Non-EU (VBD)"
+  },
+  "Aruba": {
+    "code": "AW",
+    "territory": "Non-EU (VBD)"
+  },
+  "Australia": {
+    "code": "AU",
+    "territory": "Non-EU (VBD)"
+  },
+  "Austria": {
+    "code": "AT",
+    "territory": "EU"
+  },
+  "Azerbaijan": {
+    "code": "AZ",
+    "territory": "Non-EU (VBD)"
+  },
+  "Bahamas": {
+    "code": "BS",
+    "territory": "Unsupported Territory"
+  },
+  "Bahrain": {
+    "code": "BH",
+    "territory": "Unsupported Territory"
+  },
+  "Bangladesh": {
+    "code": "BD",
+    "territory": "Unsupported Territory"
+  },
+  "Barbados": {
+    "code": "BB",
+    "territory": "Unsupported Territory"
+  },
+  "Belarus": {
+    "code": "BY",
+    "territory": "Non-EU (VBD)"
+  },
+  "Belgium": {
+    "code": "BE",
+    "territory": "EU"
+  },
+  "Belize": {
+    "code": "BZ",
+    "territory": "Unsupported Territory"
+  },
+  "Benin": {
+    "code": "BJ",
+    "territory": "Unsupported Territory"
+  },
+  "Bermuda": {
+    "code": "BM",
+    "territory": "Unsupported Territory"
+  },
+  "Bhutan": {
+    "code": "BT",
+    "territory": "Unsupported Territory"
+  },
+  "Bolivia": {
+    "code": "BO",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Bosnia and Herzegovina": {
+    "code": "BA",
+    "territory": "Non-EU (VBD)"
+  },
+  "Botswana": {
+    "code": "BW",
+    "territory": "Unsupported Territory"
+  },
+  "Bouvet Island": {
+    "code": "BV",
+    "territory": "Unsupported Territory"
+  },
+  "Brazil": {
+    "code": "BR",
+    "territory": "Non-EU (No Visa)"
+  },
+  "British Indian Ocean Territory": {
+    "code": "IO",
+    "territory": "Unsupported Territory"
+  },
+  "British Virgin Islands": {
+    "code": "VG",
+    "territory": "Non-EU (VBD)"
+  },
+  "Brunei": {
+    "code": "BN",
+    "territory": "Non-EU (VBD)"
+  },
+  "Bulgaria": {
+    "code": "BG",
+    "territory": "EU"
+  },
+  "Burkina Faso": {
+    "code": "BF",
+    "territory": "Unsupported Territory"
+  },
+  "Burundi": {
+    "code": "BI",
+    "territory": "Unsupported Territory"
+  },
+  "Cambodia": {
+    "code": "KH",
+    "territory": "Unsupported Territory"
+  },
+  "Cameroon": {
+    "code": "CM",
+    "territory": "Non-EU (VBD)"
+  },
+  "Canada": {
+    "code": "CA",
+    "territory": "Non-EU (VBD)"
+  },
+  "Cape Verde": {
+    "code": "CV",
+    "territory": "Unsupported Territory"
+  },
+  "Caribbean Netherlands": {
+    "code": "BQ",
+    "territory": "Unsupported Territory"
+  },
+  "Cayman Islands": {
+    "code": "KY",
+    "territory": "Non-EU (VBD)"
+  },
+  "Central African Republic": {
+    "code": "CF",
+    "territory": "Unsupported Territory"
+  },
+  "Chad": {
+    "code": "TD",
+    "territory": "Unsupported Territory"
+  },
+  "Chile": {
+    "code": "CL",
+    "territory": "Non-EU (No Visa)"
+  },
+  "China": {
+    "code": "CN",
+    "territory": "Non-EU (VBD)"
+  },
+  "Christmas Island": {
+    "code": "CX",
+    "territory": "Non-EU (VBD)"
+  },
+  "Cocos (Keeling) Islands": {
+    "code": "CC",
+    "territory": "Non-EU (VBD)"
+  },
+  "Colombia": {
+    "code": "CO",
+    "territory": "Non-EU (VBD)"
+  },
+  "Comoros": {
+    "code": "KM",
+    "territory": "Unsupported Territory"
+  },
+  "Congo": {
+    "code": "CG",
+    "territory": "Unsupported Territory"
+  },
+  "Cook Islands": {
+    "code": "CK",
+    "territory": "Non-EU (VBD)"
+  },
+  "Costa Rica": {
+    "code": "CR",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Cote d'Ivoire": {
+    "code": "CI",
+    "territory": "Unsupported Territory"
+  },
+  "Croatia": {
+    "code": "HR",
+    "territory": "EU"
+  },
+  "Cuba": {
+    "code": "CU",
+    "territory": "Unsupported Territory"
+  },
+  "Curaçao": {
+    "code": "CW",
+    "territory": "Non-EU (VBD)"
+  },
+  "Cyprus": {
+    "code": "CY",
+    "territory": "EU"
+  },
+  "Czech Republic": {
+    "code": "CZ",
+    "territory": "EU"
+  },
+  "Democratic Republic of the Congo": {
+    "code": "CD",
+    "territory": "Unsupported Territory"
+  },
+  "Denmark": {
+    "code": "DK",
+    "territory": "EU"
+  },
+  "Djibouti": {
+    "code": "DJ",
+    "territory": "Unsupported Territory"
+  },
+  "Dominica": {
+    "code": "DM",
+    "territory": "Unsupported Territory"
+  },
+  "Dominican Republic": {
+    "code": "DO",
+    "territory": "Unsupported Territory"
+  },
+  "East Timor": {
+    "code": "TL",
+    "territory": "Unsupported Territory"
+  },
+  "Ecuador": {
+    "code": "EC",
+    "territory": "Non-EU (VBD)"
+  },
+  "Egypt": {
+    "code": "EG",
+    "territory": "Non-EU (VBD)"
+  },
+  "El Salvador": {
+    "code": "SV",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Equatorial Guinea": {
+    "code": "GQ",
+    "territory": "Unsupported Territory"
+  },
+  "Eritrea": {
+    "code": "ER",
+    "territory": "Unsupported Territory"
+  },
+  "Estonia": {
+    "code": "EE",
+    "territory": "EU"
+  },
+  "Ethiopia": {
+    "code": "ET",
+    "territory": "Unsupported Territory"
+  },
+  "Falkland Islands": {
+    "code": "FK",
+    "territory": "Non-EU (VBD)"
+  },
+  "Faroe Islands": {
+    "code": "FO",
+    "territory": "Unsupported Territory"
+  },
+  "Fiji": {
+    "code": "FJ",
+    "territory": "Non-EU (VBD)"
+  },
+  "Finland": {
+    "code": "FI",
+    "territory": "EU"
+  },
+  "France": {
+    "code": "FR",
+    "territory": "EU"
+  },
+  "French Guiana": {
+    "code": "GF",
+    "territory": "Non-EU (VBD)"
+  },
+  "French Polynesia": {
+    "code": "PF",
+    "territory": "Non-EU (VBD)"
+  },
+  "French Southern and Antarctic Lands": {
+    "code": "TF",
+    "territory": "Non-EU (VBD)"
+  },
+  "Gabon": {
+    "code": "GA",
+    "territory": "Unsupported Territory"
+  },
+  "Gambia": {
+    "code": "GM",
+    "territory": "Unsupported Territory"
+  },
+  "Georgia": {
+    "code": "GE",
+    "territory": "Non-EU (VBD)"
+  },
+  "Germany": {
+    "code": "DE",
+    "territory": "EU"
+  },
+  "Ghana": {
+    "code": "GH",
+    "territory": "Unsupported Territory"
+  },
+  "Gibraltar": {
+    "code": "GI",
+    "territory": "EU"
+  },
+  "Greece": {
+    "code": "GR",
+    "territory": "EU"
+  },
+  "Greenland": {
+    "code": "GL",
+    "territory": "Non-EU (VBD)"
+  },
+  "Grenada": {
+    "code": "GD",
+    "territory": "Non-EU (VBD)"
+  },
+  "Guadeloupe": {
+    "code": "GP",
+    "territory": "Non-EU (VBD)"
+  },
+  "Guam": {
+    "code": "GU",
+    "territory": "Non-EU (VBD)"
+  },
+  "Guatemala": {
+    "code": "GT",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Guernsey": {
+    "code": "GG",
+    "territory": "EU"
+  },
+  "Guinea": {
+    "code": "GN",
+    "territory": "Unsupported Territory"
+  },
+  "Guinea-Bissau": {
+    "code": "GW",
+    "territory": "Unsupported Territory"
+  },
+  "Guyana": {
+    "code": "GY",
+    "territory": "Unsupported Territory"
+  },
+  "Haiti": {
+    "code": "HT",
+    "territory": "Unsupported Territory"
+  },
+  "Heard Island and McDonald Islands": {
+    "code": "HM",
+    "territory": "Non-EU (VBD)"
+  },
+  "Honduras": {
+    "code": "HN",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Hong Kong": {
+    "code": "HK",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Hungary": {
+    "code": "HU",
+    "territory": "EU"
+  },
+  "Iceland": {
+    "code": "IS",
+    "territory": "EU"
+  },
+  "India": {
+    "code": "IN",
+    "territory": "Unsupported Territory"
+  },
+  "Indonesia": {
+    "code": "ID",
+    "territory": "Non-EU (VBD)"
+  },
+  "Iran": {
+    "code": "IR",
+    "territory": "Unsupported Territory"
+  },
+  "Iraq": {
+    "code": "IQ",
+    "territory": "Unsupported Territory"
+  },
+  "Ireland": {
+    "code": "IE",
+    "territory": "EU"
+  },
+  "Isle of Man": {
+    "code": "IM",
+    "territory": "EU"
+  },
+  "Israel": {
+    "code": "IL",
+    "territory": "EU"
+  },
+  "Italy": {
+    "code": "IT",
+    "territory": "EU"
+  },
+  "Jamaica": {
+    "code": "JM",
+    "territory": "Unsupported Territory"
+  },
+  "Japan": {
+    "code": "JP",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Jersey": {
+    "code": "JE",
+    "territory": "EU"
+  },
+  "Jordan": {
+    "code": "JO",
+    "territory": "Non-EU (VBD)"
+  },
+  "Kazakhstan": {
+    "code": "KZ",
+    "territory": "Non-EU (VBD)"
+  },
+  "Kenya": {
+    "code": "KE",
+    "territory": "Unsupported Territory"
+  },
+  "Kiribati": {
+    "code": "KI",
+    "territory": "Unsupported Territory"
+  },
+  "Kosovo": {
+    "code": "XK",
+    "territory": "Unsupported Territory"
+  },
+  "Kuwait": {
+    "code": "KW",
+    "territory": "Non-EU (VBD)"
+  },
+  "Kyrgyzstan": {
+    "code": "KG",
+    "territory": "Unsupported Territory"
+  },
+  "Laos": {
+    "code": "LA",
+    "territory": "Unsupported Territory"
+  },
+  "Latvia": {
+    "code": "LV",
+    "territory": "EU"
+  },
+  "Lebanon": {
+    "code": "LB",
+    "territory": "Unsupported Territory"
+  },
+  "Lesotho": {
+    "code": "LS",
+    "territory": "Unsupported Territory"
+  },
+  "Liberia": {
+    "code": "LR",
+    "territory": "Unsupported Territory"
+  },
+  "Libya": {
+    "code": "LY",
+    "territory": "Unsupported Territory"
+  },
+  "Liechtenstein": {
+    "code": "LI",
+    "territory": "EU"
+  },
+  "Lithuania": {
+    "code": "LT",
+    "territory": "EU"
+  },
+  "Luxembourg": {
+    "code": "LU",
+    "territory": "EU"
+  },
+  "Macau": {
+    "code": "MO",
+    "territory": "Non-EU (VBD)"
+  },
+  "Macedonia (FYROM)": {
+    "code": "MK",
+    "territory": "Unsupported Territory"
+  },
+  "Madagascar": {
+    "code": "MG",
+    "territory": "Unsupported Territory"
+  },
+  "Malawi": {
+    "code": "MW",
+    "territory": "Unsupported Territory"
+  },
+  "Malaysia": {
+    "code": "MY",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Maldives": {
+    "code": "MV",
+    "territory": "Non-EU (VBD)"
+  },
+  "Mali": {
+    "code": "ML",
+    "territory": "Unsupported Territory"
+  },
+  "Malta": {
+    "code": "MT",
+    "territory": "EU"
+  },
+  "Marshall Islands": {
+    "code": "MH",
+    "territory": "Unsupported Territory"
+  },
+  "Martinique": {
+    "code": "MQ",
+    "territory": "Non-EU (VBD)"
+  },
+  "Mauritania": {
+    "code": "MR",
+    "territory": "Unsupported Territory"
+  },
+  "Mauritius": {
+    "code": "MU",
+    "territory": "Unsupported Territory"
+  },
+  "Mayotte": {
+    "code": "YT",
+    "territory": "Unsupported Territory"
+  },
+  "Mexico": {
+    "code": "MX",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Micronesia": {
+    "code": "FM",
+    "territory": "Unsupported Territory"
+  },
+  "Moldova": {
+    "code": "MD",
+    "territory": "Non-EU (VBD)"
+  },
+  "Monaco": {
+    "code": "MC",
+    "territory": "EU"
+  },
+  "Mongolia": {
+    "code": "MN",
+    "territory": "Non-EU (VBD)"
+  },
+  "Montenegro": {
+    "code": "ME",
+    "territory": "Non-EU (VBD)"
+  },
+  "Montserrat": {
+    "code": "MS",
+    "territory": "Non-EU (VBD)"
+  },
+  "Morocco": {
+    "code": "MA",
+    "territory": "Non-EU (VBD)"
+  },
+  "Mozambique": {
+    "code": "MZ",
+    "territory": "Unsupported Territory"
+  },
+  "Myanmar (Burma)": {
+    "code": "MM",
+    "territory": "Unsupported Territory"
+  },
+  "Namibia": {
+    "code": "NA",
+    "territory": "Unsupported Territory"
+  },
+  "Nauru": {
+    "code": "NR",
+    "territory": "Unsupported Territory"
+  },
+  "Nepal": {
+    "code": "NP",
+    "territory": "Unsupported Territory"
+  },
+  "Netherlands": {
+    "code": "NL",
+    "territory": "EU"
+  },
+  "Netherlands Antilles": {
+    "code": "AN",
+    "territory": "Non-EU (VBD)"
+  },
+  "New Caledonia": {
+    "code": "NC",
+    "territory": "Non-EU (VBD)"
+  },
+  "New Zealand": {
+    "code": "NZ",
+    "territory": "Non-EU (VBD)"
+  },
+  "Nicaragua": {
+    "code": "NI",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Niger": {
+    "code": "NE",
+    "territory": "Unsupported Territory"
+  },
+  "Nigeria": {
+    "code": "NG",
+    "territory": "Unsupported Territory"
+  },
+  "Niue": {
+    "code": "NU",
+    "territory": "Unsupported Territory"
+  },
+  "Norfolk Island": {
+    "code": "NF",
+    "territory": "Non-EU (VBD)"
+  },
+  "North Korea": {
+    "code": "KP",
+    "territory": "Unsupported Territory"
+  },
+  "Northern Mariana Islands": {
+    "code": "MP",
+    "territory": "Non-EU (VBD)"
+  },
+  "Norway": {
+    "code": "NO",
+    "territory": "EU"
+  },
+  "Oman": {
+    "code": "OM",
+    "territory": "Non-EU (VBD)"
+  },
+  "Pakistan": {
+    "code": "PK",
+    "territory": "Unsupported Territory"
+  },
+  "Palau": {
+    "code": "PW",
+    "territory": "Unsupported Territory"
+  },
+  "Palestine": {
+    "code": "PS",
+    "territory": "Unsupported Territory"
+  },
+  "Panama": {
+    "code": "PA",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Papua New Guinea": {
+    "code": "PG",
+    "territory": "Unsupported Territory"
+  },
+  "Paraguay": {
+    "code": "PY",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Peru": {
+    "code": "PE",
+    "territory": "Non-EU (VBD)"
+  },
+  "Philippines": {
+    "code": "PH",
+    "territory": "Unsupported Territory"
+  },
+  "Pitcairn Islands": {
+    "code": "PN",
+    "territory": "Non-EU (VBD)"
+  },
+  "Poland": {
+    "code": "PL",
+    "territory": "EU"
+  },
+  "Portugal": {
+    "code": "PT",
+    "territory": "EU"
+  },
+  "Puerto Rico": {
+    "code": "PR",
+    "territory": "Non-EU (VBD)"
+  },
+  "Qatar": {
+    "code": "QA",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Réunion": {
+    "code": "RE",
+    "territory": "Non-EU (VBD)"
+  },
+  "Romania": {
+    "code": "RO",
+    "territory": "EU"
+  },
+  "Russia": {
+    "code": "RU",
+    "territory": "Non-EU (VBD)"
+  },
+  "Rwanda": {
+    "code": "RW",
+    "territory": "Unsupported Territory"
+  },
+  "Saint Barthélemy": {
+    "code": "BL",
+    "territory": "Non-EU (VBD)"
+  },
+  "Saint Helena": {
+    "code": "SH",
+    "territory": "Non-EU (VBD)"
+  },
+  "Saint Kitts and Nevis": {
+    "code": "KN",
+    "territory": "Non-EU (VBD)"
+  },
+  "Saint Lucia": {
+    "code": "LC",
+    "territory": "Non-EU (VBD)"
+  },
+  "Saint Martin": {
+    "code": "MF",
+    "territory": "Non-EU (VBD)"
+  },
+  "Saint Pierre and Miquelon": {
+    "code": "PM",
+    "territory": "Non-EU (VBD)"
+  },
+  "Saint Vincent and the Grenadines": {
+    "code": "VC",
+    "territory": "Non-EU (VBD)"
+  },
+  "Samoa": {
+    "code": "WS",
+    "territory": "Non-EU (VBD)"
+  },
+  "San Marino": {
+    "code": "SM",
+    "territory": "EU"
+  },
+  "Sao Tome and Principe": {
+    "code": "ST",
+    "territory": "Unsupported Territory"
+  },
+  "Saudi Arabia": {
+    "code": "SA",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Senegal": {
+    "code": "SN",
+    "territory": "Unsupported Territory"
+  },
+  "Serbia": {
+    "code": "RS",
+    "territory": "Non-EU (VBD)"
+  },
+  "Seychelles": {
+    "code": "SC",
+    "territory": "Non-EU (VBD)"
+  },
+  "Sierra Leone": {
+    "code": "SL",
+    "territory": "Unsupported Territory"
+  },
+  "Singapore": {
+    "code": "SG",
+    "territory": "Non-EU (VBD)"
+  },
+  "Sint Maarten": {
+    "code": "SX",
+    "territory": "Non-EU (VBD)"
+  },
+  "Slovakia": {
+    "code": "SK",
+    "territory": "EU"
+  },
+  "Slovenia": {
+    "code": "SI",
+    "territory": "EU"
+  },
+  "Solomon Islands": {
+    "code": "SB",
+    "territory": "Non-EU (VBD)"
+  },
+  "Somalia": {
+    "code": "SO",
+    "territory": "Unsupported Territory"
+  },
+  "South Africa": {
+    "code": "ZA",
+    "territory": "Unsupported Territory"
+  },
+  "South Georgia and the South Sandwich Islands": {
+    "code": "GS",
+    "territory": "Unsupported Territory"
+  },
+  "South Korea": {
+    "code": "KR",
+    "territory": "Non-EU (No Visa)"
+  },
+  "South Sudan": {
+    "code": "SS",
+    "territory": "Unsupported Territory"
+  },
+  "Spain": {
+    "code": "ES",
+    "territory": "EU"
+  },
+  "Sri Lanka": {
+    "code": "LK",
+    "territory": "Unsupported Territory"
+  },
+  "Sudan": {
+    "code": "SD",
+    "territory": "Unsupported Territory"
+  },
+  "Suriname": {
+    "code": "SR",
+    "territory": "Unsupported Territory"
+  },
+  "Svalbard and Jan Mayen": {
+    "code": "SJ",
+    "territory": "Unsupported Territory"
+  },
+  "Swaziland": {
+    "code": "SZ",
+    "territory": "Unsupported Territory"
+  },
+  "Sweden": {
+    "code": "SE",
+    "territory": "EU"
+  },
+  "Switzerland": {
+    "code": "CH",
+    "territory": "EU"
+  },
+  "Syria": {
+    "code": "SY",
+    "territory": "Unsupported Territory"
+  },
+  "Taiwan": {
+    "code": "TW",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Tajikistan": {
+    "code": "TJ",
+    "territory": "Unsupported Territory"
+  },
+  "Tanzania": {
+    "code": "TZ",
+    "territory": "Unsupported Territory"
+  },
+  "Thailand": {
+    "code": "TH",
+    "territory": "Unsupported Territory"
+  },
+  "Togo": {
+    "code": "TG",
+    "territory": "Unsupported Territory"
+  },
+  "Tokelau": {
+    "code": "TK",
+    "territory": "Unsupported Territory"
+  },
+  "Tonga": {
+    "code": "TO",
+    "territory": "Unsupported Territory"
+  },
+  "Trinidad and Tobago": {
+    "code": "TT",
+    "territory": "Unsupported Territory"
+  },
+  "Tunisia": {
+    "code": "TN",
+    "territory": "Unsupported Territory"
+  },
+  "Turkey": {
+    "code": "TR",
+    "territory": "Non-EU (VBD)"
+  },
+  "Turkmenistan": {
+    "code": "TM",
+    "territory": "Unsupported Territory"
+  },
+  "Turks and Caicos Islands": {
+    "code": "TC",
+    "territory": "Non-EU (VBD)"
+  },
+  "Tuvalu": {
+    "code": "TV",
+    "territory": "Unsupported Territory"
+  },
+  "U.S. Virgin Islands": {
+    "code": "VI",
+    "territory": "Non-EU (VBD)"
+  },
+  "Uganda": {
+    "code": "UG",
+    "territory": "Unsupported Territory"
+  },
+  "Ukraine": {
+    "code": "UA",
+    "territory": "Non-EU (VBD)"
+  },
+  "United Arab Emirates": {
+    "code": "AE",
+    "territory": "Non-EU (VBD)"
+  },
+  "United Kingdom": {
+    "code": "GB",
+    "territory": "EU"
+  },
+  "United States": {
+    "code": "US",
+    "territory": "Non-EU (VBD)"
+  },
+  "United States Minor Outlying Islands": {
+    "code": "UM",
+    "territory": "Non-EU (VBD)"
+  },
+  "Uruguay": {
+    "code": "UY",
+    "territory": "Non-EU (No Visa)"
+  },
+  "Uzbekistan": {
+    "code": "UZ",
+    "territory": "Non-EU (VBD)"
+  },
+  "Vanuatu": {
+    "code": "VU",
+    "territory": "Unsupported Territory"
+  },
+  "Vatican City": {
+    "code": "VA",
+    "territory": "EU"
+  },
+  "Venezuela": {
+    "code": "VE",
+    "territory": "Unsupported Territory"
+  },
+  "Vietnam": {
+    "code": "VN",
+    "territory": "Unsupported Territory"
+  },
+  "Wallis and Futuna": {
+    "code": "WF",
+    "territory": "Unsupported Territory"
+  },
+  "Western Sahara": {
+    "code": "EH",
+    "territory": "Unsupported Territory"
+  },
+  "Yemen": {
+    "code": "YE",
+    "territory": "Unsupported Territory"
+  },
+  "Zambia": {
+    "code": "ZM",
+    "territory": "Unsupported Territory"
+  },
+  "Zimbabwe": {
+    "code": "ZW",
+    "territory": "Unsupported Territory"
+  }
+}

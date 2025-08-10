@@ -1,0 +1,2412 @@
+[2025-08-10T14:03:45.645Z] LOG ROTATED: Previous 6902 lines moved to gads_history.log
+[2025-08-10T14:03:45.645Z]    🔗 Contact 201931391218 has 1 deal associations
+[2025-08-10T14:03:45.647Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "201480020193"
+  },
+  "to": [
+    {
+      "id": "134767248619",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.647Z]    🔗 Contact 201480020193 has 1 deal associations
+[2025-08-10T14:03:45.648Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "202431641829"
+  },
+  "to": [
+    {
+      "id": "134269630697",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.648Z]    🔗 Contact 202431641829 has 1 deal associations
+[2025-08-10T14:03:45.649Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "202476553464"
+  },
+  "to": [
+    {
+      "id": "134262730999",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.650Z]    🔗 Contact 202476553464 has 1 deal associations
+[2025-08-10T14:03:45.651Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "202470348995"
+  },
+  "to": [
+    {
+      "id": "134327583981",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.651Z]    🔗 Contact 202470348995 has 1 deal associations
+[2025-08-10T14:03:45.653Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "202571262181"
+  },
+  "to": [
+    {
+      "id": "134373157089",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.653Z]    🔗 Contact 202571262181 has 1 deal associations
+[2025-08-10T14:03:45.654Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "202550345935"
+  },
+  "to": [
+    {
+      "id": "134376237244",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.654Z]    🔗 Contact 202550345935 has 1 deal associations
+[2025-08-10T14:03:45.656Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "202990064866"
+  },
+  "to": [
+    {
+      "id": "134710920395",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.656Z]    🔗 Contact 202990064866 has 1 deal associations
+[2025-08-10T14:03:45.657Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "203117643977"
+  },
+  "to": [
+    {
+      "id": "134759075029",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.657Z]    🔗 Contact 203117643977 has 1 deal associations
+[2025-08-10T14:03:45.659Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "203121993941"
+  },
+  "to": [
+    {
+      "id": "134746507455",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.659Z]    🔗 Contact 203121993941 has 1 deal associations
+[2025-08-10T14:03:45.660Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "203284043976"
+  },
+  "to": [
+    {
+      "id": "135028144334",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.660Z]    🔗 Contact 203284043976 has 1 deal associations
+[2025-08-10T14:03:45.662Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "203548093663"
+  },
+  "to": [
+    {
+      "id": "135294823671",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.662Z]    🔗 Contact 203548093663 has 1 deal associations
+[2025-08-10T14:03:45.664Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "208214488279"
+  },
+  "to": [
+    {
+      "id": "135645546736",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.664Z]    🔗 Contact 208214488279 has 1 deal associations
+[2025-08-10T14:03:45.666Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "204144353473"
+  },
+  "to": [
+    {
+      "id": "135736966389",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.666Z]    🔗 Contact 204144353473 has 1 deal associations
+[2025-08-10T14:03:45.668Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "204169517270"
+  },
+  "to": [
+    {
+      "id": "135770920173",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.668Z]    🔗 Contact 204169517270 has 1 deal associations
+[2025-08-10T14:03:45.669Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "204266444018"
+  },
+  "to": [
+    {
+      "id": "135679708375",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.670Z]    🔗 Contact 204266444018 has 1 deal associations
+[2025-08-10T14:03:45.671Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "204234533054"
+  },
+  "to": [
+    {
+      "id": "135959966961",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.671Z]    🔗 Contact 204234533054 has 1 deal associations
+[2025-08-10T14:03:45.673Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "204362431712"
+  },
+  "to": [
+    {
+      "id": "135912521919",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.673Z]    🔗 Contact 204362431712 has 1 deal associations
+[2025-08-10T14:03:45.675Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207904049365"
+  },
+  "to": [
+    {
+      "id": "136062543053",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.675Z]    🔗 Contact 207904049365 has 1 deal associations
+[2025-08-10T14:03:45.680Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "204800235760"
+  },
+  "to": [
+    {
+      "id": "136067945664",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.680Z]    🔗 Contact 204800235760 has 1 deal associations
+[2025-08-10T14:03:45.682Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "204743418102"
+  },
+  "to": [
+    {
+      "id": "136288517327",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.682Z]    🔗 Contact 204743418102 has 1 deal associations
+[2025-08-10T14:03:45.684Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "204884311283"
+  },
+  "to": [
+    {
+      "id": "136474859724",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.684Z]    🔗 Contact 204884311283 has 1 deal associations
+[2025-08-10T14:03:45.686Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "204997898442"
+  },
+  "to": [
+    {
+      "id": "136519916757",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.687Z]    🔗 Contact 204997898442 has 1 deal associations
+[2025-08-10T14:03:45.688Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "205206649029"
+  },
+  "to": [
+    {
+      "id": "136690610367",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.689Z]    🔗 Contact 205206649029 has 1 deal associations
+[2025-08-10T14:03:45.691Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "205131554012"
+  },
+  "to": [
+    {
+      "id": "136725876944",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.691Z]    🔗 Contact 205131554012 has 1 deal associations
+[2025-08-10T14:03:45.692Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "205087763674"
+  },
+  "to": [
+    {
+      "id": "136760570068",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.693Z]    🔗 Contact 205087763674 has 1 deal associations
+[2025-08-10T14:03:45.694Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "205311291630"
+  },
+  "to": [
+    {
+      "id": "136795554013",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.694Z]    🔗 Contact 205311291630 has 1 deal associations
+[2025-08-10T14:03:45.697Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "205523357932"
+  },
+  "to": [
+    {
+      "id": "134767840480",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.698Z]    🔗 Contact 205523357932 has 1 deal associations
+[2025-08-10T14:03:45.699Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "197680700657"
+  },
+  "to": [
+    {
+      "id": "137083404493",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.699Z]    🔗 Contact 197680700657 has 1 deal associations
+[2025-08-10T14:03:45.701Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "206519284966"
+  },
+  "to": [
+    {
+      "id": "137846252758",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.701Z]    🔗 Contact 206519284966 has 1 deal associations
+[2025-08-10T14:03:45.702Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "206650394836"
+  },
+  "to": [
+    {
+      "id": "137907481829",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.702Z]    🔗 Contact 206650394836 has 1 deal associations
+[2025-08-10T14:03:45.704Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "206726773973"
+  },
+  "to": [
+    {
+      "id": "138042495169",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.704Z]    🔗 Contact 206726773973 has 1 deal associations
+[2025-08-10T14:03:45.706Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207044470996"
+  },
+  "to": [
+    {
+      "id": "138171884786",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.706Z]    🔗 Contact 207044470996 has 1 deal associations
+[2025-08-10T14:03:45.708Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207055297765"
+  },
+  "to": [
+    {
+      "id": "138237867241",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.708Z]    🔗 Contact 207055297765 has 1 deal associations
+[2025-08-10T14:03:45.710Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207218691291"
+  },
+  "to": [
+    {
+      "id": "138371300541",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.710Z]    🔗 Contact 207218691291 has 1 deal associations
+[2025-08-10T14:03:45.712Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207256577231"
+  },
+  "to": [
+    {
+      "id": "134767852771",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.712Z]    🔗 Contact 207256577231 has 1 deal associations
+[2025-08-10T14:03:45.713Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207126545594"
+  },
+  "to": [
+    {
+      "id": "138439784639",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.713Z]    🔗 Contact 207126545594 has 1 deal associations
+[2025-08-10T14:03:45.715Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207434577137"
+  },
+  "to": [
+    {
+      "id": "138600973547",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.716Z]    🔗 Contact 207434577137 has 1 deal associations
+[2025-08-10T14:03:45.717Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207354476752"
+  },
+  "to": [
+    {
+      "id": "138618973378",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.717Z]    🔗 Contact 207354476752 has 1 deal associations
+[2025-08-10T14:03:45.719Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207750563056"
+  },
+  "to": [
+    {
+      "id": "138817855714",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.719Z]    🔗 Contact 207750563056 has 1 deal associations
+[2025-08-10T14:03:45.721Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207693352162"
+  },
+  "to": [
+    {
+      "id": "138643509490",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.721Z]    🔗 Contact 207693352162 has 1 deal associations
+[2025-08-10T14:03:45.722Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "207930565858"
+  },
+  "to": [
+    {
+      "id": "257961038060",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.723Z]    🔗 Contact 207930565858 has 1 deal associations
+[2025-08-10T14:03:45.724Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "208034813120"
+  },
+  "to": [
+    {
+      "id": "139102674151",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.724Z]    🔗 Contact 208034813120 has 1 deal associations
+[2025-08-10T14:03:45.726Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "234899115197"
+  },
+  "to": [
+    {
+      "id": "139515036902",
+      "type": "contact_to_deal"
+    },
+    {
+      "id": "200773724394",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.726Z]    🔗 Contact 234899115197 has 2 deal associations
+[2025-08-10T14:03:45.730Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "208828972269"
+  },
+  "to": [
+    {
+      "id": "139586600160",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.730Z]    🔗 Contact 208828972269 has 1 deal associations
+[2025-08-10T14:03:45.731Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "209668647153"
+  },
+  "to": [
+    {
+      "id": "139595539661",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.732Z]    🔗 Contact 209668647153 has 1 deal associations
+[2025-08-10T14:03:45.734Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "209052674243"
+  },
+  "to": [
+    {
+      "id": "139770626238",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.734Z]    🔗 Contact 209052674243 has 1 deal associations
+[2025-08-10T14:03:45.736Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "209064170744"
+  },
+  "to": [
+    {
+      "id": "139690613963",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.736Z]    🔗 Contact 209064170744 has 1 deal associations
+[2025-08-10T14:03:45.738Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "208565724358"
+  },
+  "to": [
+    {
+      "id": "140471268563",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.738Z]    🔗 Contact 208565724358 has 1 deal associations
+[2025-08-10T14:03:45.740Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "209073106120"
+  },
+  "to": [
+    {
+      "id": "139715869906",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.740Z]    🔗 Contact 209073106120 has 1 deal associations
+[2025-08-10T14:03:45.742Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "208897967326"
+  },
+  "to": [
+    {
+      "id": "139606217976",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.742Z]    🔗 Contact 208897967326 has 1 deal associations
+[2025-08-10T14:03:45.743Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "209104732392"
+  },
+  "to": [
+    {
+      "id": "139847428330",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.743Z]    🔗 Contact 209104732392 has 1 deal associations
+[2025-08-10T14:03:45.745Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "209188648137"
+  },
+  "to": [
+    {
+      "id": "139983954128",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.745Z]    🔗 Contact 209188648137 has 1 deal associations
+[2025-08-10T14:03:45.747Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "209597191396"
+  },
+  "to": [
+    {
+      "id": "140299952327",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.747Z]    🔗 Contact 209597191396 has 1 deal associations
+[2025-08-10T14:03:45.748Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "168492219636"
+  },
+  "to": [
+    {
+      "id": "140290183404",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.748Z]    🔗 Contact 168492219636 has 1 deal associations
+[2025-08-10T14:03:45.750Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "209784094915"
+  },
+  "to": [
+    {
+      "id": "140399923419",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.750Z]    🔗 Contact 209784094915 has 1 deal associations
+[2025-08-10T14:03:45.751Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "209898591469"
+  },
+  "to": [
+    {
+      "id": "140452814042",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.751Z]    🔗 Contact 209898591469 has 1 deal associations
+[2025-08-10T14:03:45.753Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "210369254594"
+  },
+  "to": [
+    {
+      "id": "140850559216",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.753Z]    🔗 Contact 210369254594 has 1 deal associations
+[2025-08-10T14:03:45.755Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "210406500585"
+  },
+  "to": [
+    {
+      "id": "140887263466",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.755Z]    🔗 Contact 210406500585 has 1 deal associations
+[2025-08-10T14:03:45.758Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "210649641205"
+  },
+  "to": [
+    {
+      "id": "141135389920",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.758Z]    🔗 Contact 210649641205 has 1 deal associations
+[2025-08-10T14:03:45.759Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219977543866"
+  },
+  "to": [
+    {
+      "id": "141175263478",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.759Z]    🔗 Contact 219977543866 has 1 deal associations
+[2025-08-10T14:03:45.761Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "210871474405"
+  },
+  "to": [
+    {
+      "id": "141294034126",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.761Z]    🔗 Contact 210871474405 has 1 deal associations
+[2025-08-10T14:03:45.762Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "210860005619"
+  },
+  "to": [
+    {
+      "id": "141283350722",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.762Z]    🔗 Contact 210860005619 has 1 deal associations
+[2025-08-10T14:03:45.763Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "210938991841"
+  },
+  "to": [
+    {
+      "id": "141340315842",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.763Z]    🔗 Contact 210938991841 has 1 deal associations
+[2025-08-10T14:03:45.765Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "210926694625"
+  },
+  "to": [
+    {
+      "id": "141340370130",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.765Z]    🔗 Contact 210926694625 has 1 deal associations
+[2025-08-10T14:03:45.766Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "210968799469"
+  },
+  "to": [
+    {
+      "id": "141404841194",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.766Z]    🔗 Contact 210968799469 has 1 deal associations
+[2025-08-10T14:03:45.768Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "211102598358"
+  },
+  "to": [
+    {
+      "id": "141483382984",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.768Z]    🔗 Contact 211102598358 has 1 deal associations
+[2025-08-10T14:03:45.769Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "211245369546"
+  },
+  "to": [
+    {
+      "id": "141628732645",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.769Z]    🔗 Contact 211245369546 has 1 deal associations
+[2025-08-10T14:03:45.770Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "211405036732"
+  },
+  "to": [
+    {
+      "id": "141715316962",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.770Z]    🔗 Contact 211405036732 has 1 deal associations
+[2025-08-10T14:03:45.772Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "217027286241"
+  },
+  "to": [
+    {
+      "id": "141672885487",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.772Z]    🔗 Contact 217027286241 has 1 deal associations
+[2025-08-10T14:03:45.774Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "211570448582"
+  },
+  "to": [
+    {
+      "id": "141396361463",
+      "type": "contact_to_deal"
+    },
+    {
+      "id": "165796772084",
+      "type": "contact_to_deal"
+    },
+    {
+      "id": "202506925245",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.774Z]    🔗 Contact 211570448582 has 3 deal associations
+[2025-08-10T14:03:45.778Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "211727264962"
+  },
+  "to": [
+    {
+      "id": "142080103621",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.778Z]    🔗 Contact 211727264962 has 1 deal associations
+[2025-08-10T14:03:45.779Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212035690740"
+  },
+  "to": [
+    {
+      "id": "142263326962",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.780Z]    🔗 Contact 212035690740 has 1 deal associations
+[2025-08-10T14:03:45.781Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212205223155"
+  },
+  "to": [
+    {
+      "id": "142308026564",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.781Z]    🔗 Contact 212205223155 has 1 deal associations
+[2025-08-10T14:03:45.782Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212178647237"
+  },
+  "to": [
+    {
+      "id": "142374360277",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.782Z]    🔗 Contact 212178647237 has 1 deal associations
+[2025-08-10T14:03:45.784Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212265530605"
+  },
+  "to": [
+    {
+      "id": "142371643636",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.784Z]    🔗 Contact 212265530605 has 1 deal associations
+[2025-08-10T14:03:45.785Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212277831920"
+  },
+  "to": [
+    {
+      "id": "141989719239",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.785Z]    🔗 Contact 212277831920 has 1 deal associations
+[2025-08-10T14:03:45.786Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212319017156"
+  },
+  "to": [
+    {
+      "id": "142948848830",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.786Z]    🔗 Contact 212319017156 has 1 deal associations
+[2025-08-10T14:03:45.788Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212772241605"
+  },
+  "to": [
+    {
+      "id": "147538923712",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.788Z]    🔗 Contact 212772241605 has 1 deal associations
+[2025-08-10T14:03:45.789Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212854986945"
+  },
+  "to": [
+    {
+      "id": "142852977907",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.789Z]    🔗 Contact 212854986945 has 1 deal associations
+[2025-08-10T14:03:45.791Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212935138498"
+  },
+  "to": [
+    {
+      "id": "142894839996",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.791Z]    🔗 Contact 212935138498 has 1 deal associations
+[2025-08-10T14:03:45.792Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "212951663808"
+  },
+  "to": [
+    {
+      "id": "142948833495",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.792Z]    🔗 Contact 212951663808 has 1 deal associations
+[2025-08-10T14:03:45.794Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213063301337"
+  },
+  "to": [
+    {
+      "id": "143138468083",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.794Z]    🔗 Contact 213063301337 has 1 deal associations
+[2025-08-10T14:03:45.795Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213096025303"
+  },
+  "to": [
+    {
+      "id": "143163673817",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.795Z]    🔗 Contact 213096025303 has 1 deal associations
+[2025-08-10T14:03:45.797Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213222863062"
+  },
+  "to": [
+    {
+      "id": "143187435728",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.797Z]    🔗 Contact 213222863062 has 1 deal associations
+[2025-08-10T14:03:45.798Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213506810042"
+  },
+  "to": [
+    {
+      "id": "143364097233",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.799Z]    🔗 Contact 213506810042 has 1 deal associations
+[2025-08-10T14:03:45.800Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213507839180"
+  },
+  "to": [
+    {
+      "id": "143213044977",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.800Z]    🔗 Contact 213507839180 has 1 deal associations
+[2025-08-10T14:03:45.802Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213523873002"
+  },
+  "to": [
+    {
+      "id": "145101193407",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.802Z]    🔗 Contact 213523873002 has 1 deal associations
+[2025-08-10T14:03:45.803Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213576478960"
+  },
+  "to": [
+    {
+      "id": "143269759163",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.804Z]    🔗 Contact 213576478960 has 1 deal associations
+[2025-08-10T14:03:45.805Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213715645647"
+  },
+  "to": [
+    {
+      "id": "143527772378",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.805Z]    🔗 Contact 213715645647 has 1 deal associations
+[2025-08-10T14:03:45.807Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213763313895"
+  },
+  "to": [
+    {
+      "id": "143268149439",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.807Z]    🔗 Contact 213763313895 has 1 deal associations
+[2025-08-10T14:03:45.808Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "213800609998"
+  },
+  "to": [
+    {
+      "id": "143441737934",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.809Z]    🔗 Contact 213800609998 has 1 deal associations
+[2025-08-10T14:03:45.810Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214004276434"
+  },
+  "to": [
+    {
+      "id": "143769740502",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.810Z]    🔗 Contact 214004276434 has 1 deal associations
+[2025-08-10T14:03:45.812Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214052771064"
+  },
+  "to": [
+    {
+      "id": "143732381895",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.812Z]    🔗 Contact 214052771064 has 1 deal associations
+[2025-08-10T14:03:45.814Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214094505174"
+  },
+  "to": [
+    {
+      "id": "143741625536",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.814Z]    🔗 Contact 214094505174 has 1 deal associations
+[2025-08-10T14:03:45.815Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214168295644"
+  },
+  "to": [
+    {
+      "id": "143820751095",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.815Z]    🔗 Contact 214168295644 has 1 deal associations
+[2025-08-10T14:03:45.816Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214148609219"
+  },
+  "to": [
+    {
+      "id": "143821595849",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:45.816Z]    🔗 Contact 214148609219 has 1 deal associations
+[2025-08-10T14:03:46.019Z]    📦 Processing batch 10/10
+[2025-08-10T14:03:46.095Z]    🔍 API Response for batch: {
+  "status": "COMPLETE",
+  "resultsCount": 100,
+  "sampleResult": "{\n  \"_from\": {\n    \"id\": \"214167578865\"\n  },\n  \"to\": [\n    {\n      \"id\": \"143835429111\",\n      \"type\": \"contact_to_deal\"\n    }\n  ]\n}"
+}
+[2025-08-10T14:03:46.096Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214167578865"
+  },
+  "to": [
+    {
+      "id": "143835429111",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.096Z]    🔗 Contact 214167578865 has 1 deal associations
+[2025-08-10T14:03:46.098Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "205707477189"
+  },
+  "to": [
+    {
+      "id": "150136736986",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.098Z]    🔗 Contact 205707477189 has 1 deal associations
+[2025-08-10T14:03:46.099Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214451730653"
+  },
+  "to": [
+    {
+      "id": "144146482398",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.099Z]    🔗 Contact 214451730653 has 1 deal associations
+[2025-08-10T14:03:46.101Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214483681520"
+  },
+  "to": [
+    {
+      "id": "144039543996",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.101Z]    🔗 Contact 214483681520 has 1 deal associations
+[2025-08-10T14:03:46.103Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214496360686"
+  },
+  "to": [
+    {
+      "id": "144168358074",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.103Z]    🔗 Contact 214496360686 has 1 deal associations
+[2025-08-10T14:03:46.105Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214677597373"
+  },
+  "to": [
+    {
+      "id": "144292019420",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.105Z]    🔗 Contact 214677597373 has 1 deal associations
+[2025-08-10T14:03:46.107Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214811395284"
+  },
+  "to": [
+    {
+      "id": "144498045176",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.107Z]    🔗 Contact 214811395284 has 1 deal associations
+[2025-08-10T14:03:46.109Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221979112686"
+  },
+  "to": [
+    {
+      "id": "144548644035",
+      "type": "contact_to_deal"
+    },
+    {
+      "id": "178343642344",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.109Z]    🔗 Contact 221979112686 has 2 deal associations
+[2025-08-10T14:03:46.114Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214879013060"
+  },
+  "to": [
+    {
+      "id": "144517007580",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.114Z]    🔗 Contact 214879013060 has 1 deal associations
+[2025-08-10T14:03:46.116Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214949242103"
+  },
+  "to": [
+    {
+      "id": "144598431956",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.116Z]    🔗 Contact 214949242103 has 1 deal associations
+[2025-08-10T14:03:46.118Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214997903570"
+  },
+  "to": [
+    {
+      "id": "144610631870",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.118Z]    🔗 Contact 214997903570 has 1 deal associations
+[2025-08-10T14:03:46.119Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "214980132041"
+  },
+  "to": [
+    {
+      "id": "144688961736",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.120Z]    🔗 Contact 214980132041 has 1 deal associations
+[2025-08-10T14:03:46.121Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215035543766"
+  },
+  "to": [
+    {
+      "id": "144763047152",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.121Z]    🔗 Contact 215035543766 has 1 deal associations
+[2025-08-10T14:03:46.123Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215144365252"
+  },
+  "to": [
+    {
+      "id": "144711253187",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.123Z]    🔗 Contact 215144365252 has 1 deal associations
+[2025-08-10T14:03:46.124Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "351138475232"
+  },
+  "to": [
+    {
+      "id": "144891401407",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.125Z]    🔗 Contact 351138475232 has 1 deal associations
+[2025-08-10T14:03:46.126Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215484766452"
+  },
+  "to": [
+    {
+      "id": "145036824770",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.126Z]    🔗 Contact 215484766452 has 1 deal associations
+[2025-08-10T14:03:46.128Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215474494688"
+  },
+  "to": [
+    {
+      "id": "146443034864",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.128Z]    🔗 Contact 215474494688 has 1 deal associations
+[2025-08-10T14:03:46.129Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215562053818"
+  },
+  "to": [
+    {
+      "id": "145127341243",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.129Z]    🔗 Contact 215562053818 has 1 deal associations
+[2025-08-10T14:03:46.131Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215636465853"
+  },
+  "to": [
+    {
+      "id": "145221483729",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.131Z]    🔗 Contact 215636465853 has 1 deal associations
+[2025-08-10T14:03:46.132Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215669949659"
+  },
+  "to": [
+    {
+      "id": "145239987438",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.132Z]    🔗 Contact 215669949659 has 1 deal associations
+[2025-08-10T14:03:46.134Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215650065607"
+  },
+  "to": [
+    {
+      "id": "145242435779",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.134Z]    🔗 Contact 215650065607 has 1 deal associations
+[2025-08-10T14:03:46.135Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215741203700"
+  },
+  "to": [
+    {
+      "id": "145334697201",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.135Z]    🔗 Contact 215741203700 has 1 deal associations
+[2025-08-10T14:03:46.137Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215833656523"
+  },
+  "to": [
+    {
+      "id": "145350201572",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.137Z]    🔗 Contact 215833656523 has 1 deal associations
+[2025-08-10T14:03:46.138Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215852417256"
+  },
+  "to": [
+    {
+      "id": "145409650897",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.138Z]    🔗 Contact 215852417256 has 1 deal associations
+[2025-08-10T14:03:46.140Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215859919058"
+  },
+  "to": [
+    {
+      "id": "145368392949",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.140Z]    🔗 Contact 215859919058 has 1 deal associations
+[2025-08-10T14:03:46.141Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "215920437444"
+  },
+  "to": [
+    {
+      "id": "145419227356",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.141Z]    🔗 Contact 215920437444 has 1 deal associations
+[2025-08-10T14:03:46.143Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "216355590357"
+  },
+  "to": [
+    {
+      "id": "145800106193",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.143Z]    🔗 Contact 216355590357 has 1 deal associations
+[2025-08-10T14:03:46.144Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "216269357251"
+  },
+  "to": [
+    {
+      "id": "145624333552",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.144Z]    🔗 Contact 216269357251 has 1 deal associations
+[2025-08-10T14:03:46.145Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "216694586560"
+  },
+  "to": [
+    {
+      "id": "146137279731",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.146Z]    🔗 Contact 216694586560 has 1 deal associations
+[2025-08-10T14:03:46.147Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "216999321836"
+  },
+  "to": [
+    {
+      "id": "146381040841",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.147Z]    🔗 Contact 216999321836 has 1 deal associations
+[2025-08-10T14:03:46.149Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "217205573878"
+  },
+  "to": [
+    {
+      "id": "146545749237",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.149Z]    🔗 Contact 217205573878 has 1 deal associations
+[2025-08-10T14:03:46.151Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "217308664049"
+  },
+  "to": [
+    {
+      "id": "146628773065",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.151Z]    🔗 Contact 217308664049 has 1 deal associations
+[2025-08-10T14:03:46.152Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "217331947751"
+  },
+  "to": [
+    {
+      "id": "146606717175",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.152Z]    🔗 Contact 217331947751 has 1 deal associations
+[2025-08-10T14:03:46.154Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "217378270423"
+  },
+  "to": [
+    {
+      "id": "146689252565",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.154Z]    🔗 Contact 217378270423 has 1 deal associations
+[2025-08-10T14:03:46.156Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "217524374762"
+  },
+  "to": [
+    {
+      "id": "146766719187",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.156Z]    🔗 Contact 217524374762 has 1 deal associations
+[2025-08-10T14:03:46.157Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "217630337254"
+  },
+  "to": [
+    {
+      "id": "146863095020",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.158Z]    🔗 Contact 217630337254 has 1 deal associations
+[2025-08-10T14:03:46.159Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "217915600116"
+  },
+  "to": [
+    {
+      "id": "147123499207",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.159Z]    🔗 Contact 217915600116 has 1 deal associations
+[2025-08-10T14:03:46.161Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "218308457682"
+  },
+  "to": [
+    {
+      "id": "147398749415",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.161Z]    🔗 Contact 218308457682 has 1 deal associations
+[2025-08-10T14:03:46.162Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "218560575692"
+  },
+  "to": [
+    {
+      "id": "147582461177",
+      "type": "contact_to_deal"
+    },
+    {
+      "id": "148679095505",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.162Z]    🔗 Contact 218560575692 has 2 deal associations
+[2025-08-10T14:03:46.166Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "218459803871"
+  },
+  "to": [
+    {
+      "id": "147591010514",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.166Z]    🔗 Contact 218459803871 has 1 deal associations
+[2025-08-10T14:03:46.169Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219086577906"
+  },
+  "to": [
+    {
+      "id": "147979743475",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.169Z]    🔗 Contact 219086577906 has 1 deal associations
+[2025-08-10T14:03:46.170Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219233546428"
+  },
+  "to": [
+    {
+      "id": "148067153128",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.170Z]    🔗 Contact 219233546428 has 1 deal associations
+[2025-08-10T14:03:46.171Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219205733567"
+  },
+  "to": [
+    {
+      "id": "148019048647",
+      "type": "contact_to_deal"
+    },
+    {
+      "id": "186142072025",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.172Z]    🔗 Contact 219205733567 has 2 deal associations
+[2025-08-10T14:03:46.175Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219261471954"
+  },
+  "to": [
+    {
+      "id": "148097707199",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.175Z]    🔗 Contact 219261471954 has 1 deal associations
+[2025-08-10T14:03:46.177Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219167535352"
+  },
+  "to": [
+    {
+      "id": "152635724997",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.177Z]    🔗 Contact 219167535352 has 1 deal associations
+[2025-08-10T14:03:46.178Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219266891994"
+  },
+  "to": [
+    {
+      "id": "148133707995",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.178Z]    🔗 Contact 219266891994 has 1 deal associations
+[2025-08-10T14:03:46.180Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219318554813"
+  },
+  "to": [
+    {
+      "id": "148195668166",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.180Z]    🔗 Contact 219318554813 has 1 deal associations
+[2025-08-10T14:03:46.181Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219363273924"
+  },
+  "to": [
+    {
+      "id": "148175309026",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.182Z]    🔗 Contact 219363273924 has 1 deal associations
+[2025-08-10T14:03:46.183Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219595800788"
+  },
+  "to": [
+    {
+      "id": "148281612521",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.183Z]    🔗 Contact 219595800788 has 1 deal associations
+[2025-08-10T14:03:46.184Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "192478862539"
+  },
+  "to": [
+    {
+      "id": "148460961003",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.185Z]    🔗 Contact 192478862539 has 1 deal associations
+[2025-08-10T14:03:46.186Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219506649301"
+  },
+  "to": [
+    {
+      "id": "148298172663",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.186Z]    🔗 Contact 219506649301 has 1 deal associations
+[2025-08-10T14:03:46.188Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219599556818"
+  },
+  "to": [
+    {
+      "id": "148282956013",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.188Z]    🔗 Contact 219599556818 has 1 deal associations
+[2025-08-10T14:03:46.190Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219679380682"
+  },
+  "to": [
+    {
+      "id": "148275817678",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.190Z]    🔗 Contact 219679380682 has 1 deal associations
+[2025-08-10T14:03:46.191Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219784494322"
+  },
+  "to": [
+    {
+      "id": "148415069414",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.191Z]    🔗 Contact 219784494322 has 1 deal associations
+[2025-08-10T14:03:46.193Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "219874943224"
+  },
+  "to": [
+    {
+      "id": "148662401214",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.193Z]    🔗 Contact 219874943224 has 1 deal associations
+[2025-08-10T14:03:46.194Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220135299308"
+  },
+  "to": [
+    {
+      "id": "148856450275",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.195Z]    🔗 Contact 220135299308 has 1 deal associations
+[2025-08-10T14:03:46.196Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220242545857"
+  },
+  "to": [
+    {
+      "id": "150629105867",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.196Z]    🔗 Contact 220242545857 has 1 deal associations
+[2025-08-10T14:03:46.198Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220353009882"
+  },
+  "to": [
+    {
+      "id": "149055660247",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.198Z]    🔗 Contact 220353009882 has 1 deal associations
+[2025-08-10T14:03:46.199Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220379339987"
+  },
+  "to": [
+    {
+      "id": "149079010506",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.199Z]    🔗 Contact 220379339987 has 1 deal associations
+[2025-08-10T14:03:46.201Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220459181283"
+  },
+  "to": [
+    {
+      "id": "149103170805",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.202Z]    🔗 Contact 220459181283 has 1 deal associations
+[2025-08-10T14:03:46.204Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220461670612"
+  },
+  "to": [
+    {
+      "id": "149150768365",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.204Z]    🔗 Contact 220461670612 has 1 deal associations
+[2025-08-10T14:03:46.207Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220492494018"
+  },
+  "to": [
+    {
+      "id": "149185983711",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.207Z]    🔗 Contact 220492494018 has 1 deal associations
+[2025-08-10T14:03:46.209Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220709036243"
+  },
+  "to": [
+    {
+      "id": "149467632864",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.209Z]    🔗 Contact 220709036243 has 1 deal associations
+[2025-08-10T14:03:46.212Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220754515175"
+  },
+  "to": [
+    {
+      "id": "149479991520",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.212Z]    🔗 Contact 220754515175 has 1 deal associations
+[2025-08-10T14:03:46.213Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220820445390"
+  },
+  "to": [
+    {
+      "id": "149531583674",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.213Z]    🔗 Contact 220820445390 has 1 deal associations
+[2025-08-10T14:03:46.215Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "220824644825"
+  },
+  "to": [
+    {
+      "id": "149582886083",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.215Z]    🔗 Contact 220824644825 has 1 deal associations
+[2025-08-10T14:03:46.216Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221022654709"
+  },
+  "to": [
+    {
+      "id": "149683850470",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.216Z]    🔗 Contact 221022654709 has 1 deal associations
+[2025-08-10T14:03:46.218Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221053823214"
+  },
+  "to": [
+    {
+      "id": "149724440770",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.218Z]    🔗 Contact 221053823214 has 1 deal associations
+[2025-08-10T14:03:46.219Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221100675304"
+  },
+  "to": [
+    {
+      "id": "149947276487",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.219Z]    🔗 Contact 221100675304 has 1 deal associations
+[2025-08-10T14:03:46.221Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221220469953"
+  },
+  "to": [
+    {
+      "id": "149971973317",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.221Z]    🔗 Contact 221220469953 has 1 deal associations
+[2025-08-10T14:03:46.223Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221307189496"
+  },
+  "to": [
+    {
+      "id": "151536852177",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.223Z]    🔗 Contact 221307189496 has 1 deal associations
+[2025-08-10T14:03:46.225Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221401232624"
+  },
+  "to": [
+    {
+      "id": "150147414207",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.225Z]    🔗 Contact 221401232624 has 1 deal associations
+[2025-08-10T14:03:46.227Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222263063781"
+  },
+  "to": [
+    {
+      "id": "150125701310",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.227Z]    🔗 Contact 222263063781 has 1 deal associations
+[2025-08-10T14:03:46.228Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "175106686191"
+  },
+  "to": [
+    {
+      "id": "150183121091",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.228Z]    🔗 Contact 175106686191 has 1 deal associations
+[2025-08-10T14:03:46.230Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221712869569"
+  },
+  "to": [
+    {
+      "id": "150265989326",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.230Z]    🔗 Contact 221712869569 has 1 deal associations
+[2025-08-10T14:03:46.231Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221679644896"
+  },
+  "to": [
+    {
+      "id": "150372193499",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.231Z]    🔗 Contact 221679644896 has 1 deal associations
+[2025-08-10T14:03:46.233Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "221693978812"
+  },
+  "to": [
+    {
+      "id": "150266136805",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.233Z]    🔗 Contact 221693978812 has 1 deal associations
+[2025-08-10T14:03:46.236Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222138370291"
+  },
+  "to": [
+    {
+      "id": "150716455157",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.236Z]    🔗 Contact 222138370291 has 1 deal associations
+[2025-08-10T14:03:46.237Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222232794350"
+  },
+  "to": [
+    {
+      "id": "150741265648",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.237Z]    🔗 Contact 222232794350 has 1 deal associations
+[2025-08-10T14:03:46.239Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222249381051"
+  },
+  "to": [
+    {
+      "id": "150748795074",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.239Z]    🔗 Contact 222249381051 has 1 deal associations
+[2025-08-10T14:03:46.241Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222348414147"
+  },
+  "to": [
+    {
+      "id": "150859397345",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.241Z]    🔗 Contact 222348414147 has 1 deal associations
+[2025-08-10T14:03:46.243Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "224824091897"
+  },
+  "to": [
+    {
+      "id": "150947379437",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.243Z]    🔗 Contact 224824091897 has 1 deal associations
+[2025-08-10T14:03:46.245Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222509613277"
+  },
+  "to": [
+    {
+      "id": "151007129797",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.245Z]    🔗 Contact 222509613277 has 1 deal associations
+[2025-08-10T14:03:46.248Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "169833099497"
+  },
+  "to": [
+    {
+      "id": "150943158479",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.248Z]    🔗 Contact 169833099497 has 1 deal associations
+[2025-08-10T14:03:46.250Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222721746138"
+  },
+  "to": [
+    {
+      "id": "151036416249",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.250Z]    🔗 Contact 222721746138 has 1 deal associations
+[2025-08-10T14:03:46.253Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222954027252"
+  },
+  "to": [
+    {
+      "id": "151139096820",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.253Z]    🔗 Contact 222954027252 has 1 deal associations
+[2025-08-10T14:03:46.254Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222955696343"
+  },
+  "to": [
+    {
+      "id": "151169324241",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.255Z]    🔗 Contact 222955696343 has 1 deal associations
+[2025-08-10T14:03:46.256Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222788189408"
+  },
+  "to": [
+    {
+      "id": "151384637689",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.256Z]    🔗 Contact 222788189408 has 1 deal associations
+[2025-08-10T14:03:46.258Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222518646999"
+  },
+  "to": [
+    {
+      "id": "151570918607",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.258Z]    🔗 Contact 222518646999 has 1 deal associations
+[2025-08-10T14:03:46.259Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "222984884435"
+  },
+  "to": [
+    {
+      "id": "151484958947",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.259Z]    🔗 Contact 222984884435 has 1 deal associations
+[2025-08-10T14:03:46.261Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "223189757127"
+  },
+  "to": [
+    {
+      "id": "151426389204",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.262Z]    🔗 Contact 223189757127 has 1 deal associations
+[2025-08-10T14:03:46.263Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "223198041277"
+  },
+  "to": [
+    {
+      "id": "152317552861",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.263Z]    🔗 Contact 223198041277 has 1 deal associations
+[2025-08-10T14:03:46.265Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "223214579931"
+  },
+  "to": [
+    {
+      "id": "151444773103",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.265Z]    🔗 Contact 223214579931 has 1 deal associations
+[2025-08-10T14:03:46.266Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "223020170467"
+  },
+  "to": [
+    {
+      "id": "151507284191",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.266Z]    🔗 Contact 223020170467 has 1 deal associations
+[2025-08-10T14:03:46.268Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "216163439804"
+  },
+  "to": [
+    {
+      "id": "151687520451",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.268Z]    🔗 Contact 216163439804 has 1 deal associations
+[2025-08-10T14:03:46.270Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "223661420737"
+  },
+  "to": [
+    {
+      "id": "151751965889",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.270Z]    🔗 Contact 223661420737 has 1 deal associations
+[2025-08-10T14:03:46.271Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "223607643353"
+  },
+  "to": [
+    {
+      "id": "151753994461",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.272Z]    🔗 Contact 223607643353 has 1 deal associations
+[2025-08-10T14:03:46.273Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "223633746110"
+  },
+  "to": [
+    {
+      "id": "151815176416",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.274Z]    🔗 Contact 223633746110 has 1 deal associations
+[2025-08-10T14:03:46.275Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "223469319390"
+  },
+  "to": [
+    {
+      "id": "152420422859",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.275Z]    🔗 Contact 223469319390 has 1 deal associations
+[2025-08-10T14:03:46.277Z]    🔍 DEBUG: Processing result structure: {
+  "_from": {
+    "id": "223697174772"
+  },
+  "to": [
+    {
+      "id": "151843066062",
+      "type": "contact_to_deal"
+    }
+  ]
+}
+[2025-08-10T14:03:46.277Z]    🔗 Contact 223697174772 has 1 deal associations
+[2025-08-10T14:03:46.479Z] ✅ Associations sync complete: 1095 associations saved
+[2025-08-10T14:03:46.480Z] 🎉 Enhanced sync completed successfully!
+[2025-08-10T14:03:46.480Z] 📊 Synced: 946 contacts, 217 deals
+[2025-08-10T14:03:46.480Z] 🔗 Contact-Deal Associations: 1095 via API v4
+[2025-08-10T14:03:46.484Z] ✅ HubSpot sync completed: {
+  "success": true,
+  "contacts_synced": 946,
+  "deals_synced": 217,
+  "associations_synced": 1095,
+  "contact_properties_used": 360,
+  "deal_properties_used": 342,
+  "date_range": {
+    "start": "2025-07-11T14:02:11.641Z",
+    "end": "2025-08-10T14:02:11.641Z"
+  },
+  "timestamp": "2025-08-10T14:03:46.481Z"
+}
+[2025-08-10T14:11:38.572Z] Logger initialized - logging to gads.log with auto-rotation at 5000 lines
+[2025-08-10T14:11:38.615Z] 🎉 Google Ads AI Iterator started on port 8080
+[2025-08-10T14:11:38.616Z] 📊 Dashboard: https://hub.ulearnschool.com/gads/
+[2025-08-10T14:11:38.616Z] 🏥 Health: https://hub.ulearnschool.com/gads/health
+[2025-08-10T14:11:38.617Z] 
+[2025-08-10T14:11:38.617Z] ✅ Centralized API clients initialized:
+[2025-08-10T14:11:38.617Z]    📊 HubSpot Client: Ready
+[2025-08-10T14:11:38.617Z]    🎯 Google OAuth: Ready
+[2025-08-10T14:11:38.618Z]    🎯 Google Ads API Client: Ready
+[2025-08-10T14:11:38.618Z]    🗄️  Database Pool: Ready
+[2025-08-10T14:11:38.680Z] ERROR: ❌ Pipeline analysis failed: hubspotData.getTerritoryValidationStage is not a function

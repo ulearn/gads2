@@ -1,0 +1,120 @@
+/**
+ * Get territory analysis with deal pipeline data
+ * Updated to identify unsupported territories contributing to burn rate
+ */
+async function getTerritoryAnalysis(getDbConnection, days = 30) {
+  try {
+    const connection = await getDbConnection();
+    
+    try {
+      const endDate = new Date();
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - days);
+      
+      const startDateStr = startDate.toISOString().slice(0, 19).replace('T', ' ');
+      const endDateStr = endDate.toISOString().slice(0, 19).replace('T', ' ');
+      
+      console.log(`🌍 Getting territory analysis for ${days} days...`);
+      
+      // Define unsupported territories that contribute to burn rate
+      const unsupportedTerritories = [
+        'Bangladesh', 'India', 'Sudan', 'Pakistan', 'Afghanistan', 
+        'Nigeria', 'Ghana', 'Kenya', 'Ethiopia', 'Egypt',
+        'Myanmar', 'Syria', 'Iran', 'North Korea', 'Somalia'
+        // Add any other unsupported territories here
+      ];
+      
+      // Get territory performance with proper categorization
+      const [territoriesResult] = await connection.execute(`
+        SELECT 
+          CASE 
+            WHEN COALESCE(nationality, territory, '') IN (${unsupportedTerritories.map(() => '?').join(',')})
+            THEN 'Unsupported Territory'
+            ELSE COALESCE(nationality, territory, 'Unknown')
+          END as territory,
+          GROUP_CONCAT(DISTINCT COALESCE(nationality, territory, '')) as raw_territories,
+          COUNT(*) as contacts,
+          COUNT(CASE WHEN CAST(COALESCE(num_associated_deals, '0') as UNSIGNED) > 0 THEN 1 END) as deals,
+          COUNT(CASE WHEN lifecyclestage = 'lead' THEN 1 END) as leads,
+          COUNT(CASE WHEN lifecyclestage = 'marketingqualifiedlead' THEN 1 END) as mql,
+          COUNT(CASE WHEN lifecyclestage = 'salesqualifiedlead' THEN 1 END) as sql,
+          COUNT(CASE WHEN lifecyclestage = 'opportunity' THEN 1 END) as opportunities,
+          COUNT(CASE WHEN lifecyclestage = 'customer' THEN 1 END) as customers,
+          COALESCE(SUM(CAST(COALESCE(hs_analytics_revenue, '0') as DECIMAL(15,2))), 0) as revenue,
+          COALESCE(AVG(CAST(COALESCE(hs_analytics_num_page_views, '0') as UNSIGNED)), 0) as avg_page_views,
+          COALESCE(AVG(CAST(COALESCE(hs_analytics_num_visits, '0') as UNSIGNED)), 0) as avg_visits
+        FROM hub_contacts 
+        WHERE hs_analytics_source = 'PAID_SEARCH'
+          AND createdate >= ? 
+          AND createdate <= ?
+        GROUP BY CASE 
+          WHEN COALESCE(nationality, territory, '') IN (${unsupportedTerritories.map(() => '?').join(',')})
+          THEN 'Unsupported Territory'
+          ELSE COALESCE(nationality, territory, 'Unknown')
+        END
+        HAVING contacts > 0
+        ORDER BY 
+          CASE WHEN territory = 'Unsupported Territory' THEN 1 ELSE 2 END,
+          contacts DESC
+        LIMIT 20
+      `, [
+        ...unsupportedTerritories, // For the CASE WHEN clause
+        startDateStr, 
+        endDateStr,
+        ...unsupportedTerritories  // For the GROUP BY CASE clause
+      ]);
+      
+      console.log(`✅ Territory analysis: ${territoriesResult.length} territories (including unsupported)`);
+      
+      return {
+        success: true,
+        territories: territoriesResult.map((t, index) => {
+          const isUnsupported = t.territory === 'Unsupported Territory';
+          const conversionRate = t.contacts > 0 ? ((t.deals / t.contacts) * 100).toFixed(1) : 0;
+          
+          return {
+            name: t.territory || 'Unknown',
+            rawTerritories: t.raw_territories ? t.raw_territories.split(',') : [],
+            contacts: parseInt(t.contacts) || 0,
+            deals: parseInt(t.deals) || 0,
+            revenue: parseFloat(t.revenue) || 0,
+            pipeline: {
+              leads: parseInt(t.leads) || 0,
+              mql: parseInt(t.mql) || 0,
+              sql: parseInt(t.sql) || 0,
+              opportunities: parseInt(t.opportunities) || 0,
+              customers: parseInt(t.customers) || 0
+            },
+            avgPageViews: parseFloat(t.avg_page_views) || 0,
+            avgVisits: parseFloat(t.avg_visits) || 0,
+            conversionRate: parseFloat(conversionRate),
+            isUnsupported: isUnsupported,
+            // Flag for burn rate analysis
+            burnRateFlag: isUnsupported && t.contacts > 0,
+            color: isUnsupported ? '#EF4444' : getColorByIndex(index) // Red for unsupported
+          };
+        }),
+        // Summary for burn rate analysis
+        burnRateSummary: {
+          unsupportedContacts: territoriesResult
+            .filter(t => t.territory === 'Unsupported Territory')
+            .reduce((sum, t) => sum + parseInt(t.contacts), 0),
+          totalContacts: territoriesResult
+            .reduce((sum, t) => sum + parseInt(t.contacts), 0)
+        },
+        timestamp: new Date().toISOString()
+      };
+      
+    } finally {
+      await connection.end();
+    }
+    
+  } catch (error) {
+    console.error('❌ Territory analysis failed:', error.message);
+    return {
+      success: false,
+      error: error.message,
+      timestamp: new Date().toISOString()
+    };
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "gads",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@hubspot/api-client": "^13.0.0",
+    "axios": "^1.11.0",
+    "dotenv": "16.6.1",
+    "express": "^4.21.2",
+    "google-ads-api": "^20.0.1",
+    "googleapis": "154.1.0",
+    "mysql2": "^3.14.3"
+  }
+}
