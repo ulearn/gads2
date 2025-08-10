@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pipeline Analysis Dashboard</title>
+    <title>Pipeline Analysis - Enhanced with Territory Validation</title>
     
     <!-- React & Dependencies -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -13,503 +13,567 @@
     <!-- Chart Library -->
     <script src="https://unpkg.com/recharts@2.8.0/umd/Recharts.js"></script>
     
-    <!-- Icons -->
-    <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js"></script>
-    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Custom Styles -->
     <style>
-      body {
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-      }
-      
-      /* Loading animation */
-      .loading {
-        display: inline-block;
-        width: 20px;
-        height: 20px;
-        border: 3px solid #f3f3f3;
-        border-top: 3px solid #3498db;
-        border-radius: 50%;
-        animation: spin 2s linear infinite;
-      }
-      
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
-      
-      /* Smooth transitions */
-      .card-hover {
-        transition: all 0.3s ease;
-      }
-      
-      .card-hover:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-      }
-
-      /* Pipeline stage hover effects */
-      .pipeline-stage {
-        transition: all 0.3s ease;
-      }
-      
-      .pipeline-stage:hover {
-        transform: translateY(-2px) scale(1.02);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-      }
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .pipeline-stage {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .pipeline-stage:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stage-inbox { border-left-color: #3b82f6; }
+        .stage-sequenced { border-left-color: #10b981; }
+        .stage-engaging { border-left-color: #f59e0b; }
+        .stage-responsive { border-left-color: #ef4444; }
+        .stage-advising { border-left-color: #8b5cf6; }
+        .stage-negotiation { border-left-color: #06b6d4; }
+        .stage-contract { border-left-color: #84cc16; }
+        .stage-won { border-left-color: #22c55e; }
+        .stage-lost { border-left-color: #dc2626; }
+        
+        .mql-validation-flow {
+            background: linear-gradient(90deg, #dbeafe 0%, #fef3c7 50%, #dcfce7 100%);
+        }
+        
+        .loading {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .burn-rate-alert {
+            animation: pulse 2s infinite;
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
     </style>
 </head>
 <body>
-    <!-- React Mount Point -->
-    <div id="root">
-      <div class="min-h-screen bg-gray-100 flex items-center justify-center">
-        <div class="text-center">
-          <div class="loading"></div>
-          <p class="mt-4 text-gray-600">Loading pipeline analysis...</p>
-        </div>
-      </div>
-    </div>
-    
-    <!-- React Component -->
+    <div id="pipeline-root"></div>
+
     <script type="text/babel">
-        const { useState, useEffect } = React;
-        
         const PipelineAnalysis = () => {
-          const [dateRange, setDateRange] = useState('30');
-          const [selectedCampaign, setSelectedCampaign] = useState('all');
-          const [isLoading, setIsLoading] = useState(true);
-          const [pipelineData, setPipelineData] = useState(null);
-          const [campaigns, setCampaigns] = useState([]);
-          const [error, setError] = useState(null);
-          const [showProbabilityRefresh, setShowProbabilityRefresh] = useState(false);
-          const [probabilityData, setProbabilityData] = useState(null);
+            const [pipelineData, setPipelineData] = React.useState(null);
+            const [isLoading, setIsLoading] = React.useState(true);
+            const [error, setError] = React.useState(null);
+            const [analysisMode, setAnalysisMode] = React.useState('pipeline');
+            const [dateRange, setDateRange] = React.useState('30');
+            const [probabilities, setProbabilities] = React.useState(null);
 
-          // Fetch pipeline data on component mount and when filters change
-          useEffect(() => {
-            fetchPipelineData();
-          }, [dateRange, selectedCampaign]);
+            React.useEffect(() => {
+                fetchPipelineData();
+            }, [analysisMode, dateRange]);
 
-          // Main data fetch function - uses real MySQL API
-          const fetchPipelineData = async () => {
-            setIsLoading(true);
-            setError(null);
-            
-            try {
-              console.log(`⚡ Fetching FAST pipeline data for ${dateRange} days, campaign: ${selectedCampaign}`);
-              
-              // Call the correct pipeline-data endpoint
-              const response = await fetch(`/gads/analytics/pipeline-data?days=${dateRange}&campaign=${selectedCampaign}`);
-              
-              if (!response.ok) {
-                throw new Error(`API error: ${response.status} ${response.statusText}`);
-              }
-              
-              const result = await response.json();
-              
-              if (!result.success) {
-                throw new Error(result.error || 'Failed to fetch pipeline data');
-              }
-              
-              console.log('⚡ FAST pipeline data loaded:', result);
-              setPipelineData(result);
-              setCampaigns(result.campaigns || []);
-
-            } catch (err) {
-              console.error('❌ Failed to fetch pipeline data:', err);
-              setError(err.message);
-            }
-            
-            setIsLoading(false);
-          };
-
-          // Probability refresh function (separate from main data)
-          const fetchProbabilityData = async () => {
-            try {
-              console.log('🔄 Refreshing probability data...');
-              setShowProbabilityRefresh(true);
-              
-              // Call your existing pipeline-probs.js endpoint
-              const response = await fetch(`/gads/analytics/prob?days=${dateRange}&pipeline=default`);
-              const result = await response.json();
-              
-              if (result.success) {
-                setProbabilityData(result);
-                console.log('✅ Probability data refreshed:', result);
-              } else {
-                throw new Error(result.error || 'Failed to fetch probability data');
-              }
-              
-            } catch (err) {
-              console.error('❌ Probability refresh failed:', err);
-              setError(`Probability refresh failed: ${err.message}`);
-            } finally {
-              setShowProbabilityRefresh(false);
-            }
-          };
-
-          const formatNumber = (num) => new Intl.NumberFormat().format(num || 0);
-          const formatCurrency = (num) => new Intl.NumberFormat('en-EU', { 
-            style: 'currency', currency: 'EUR', minimumFractionDigits: 0 
-          }).format(num || 0);
-          const formatPercentage = (num) => `${(num || 0).toFixed(1)}%`;
-
-          // Loading state
-          if (isLoading || !pipelineData) {
-            return (
-              <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="loading mb-4"></div>
-                  <p className="text-lg text-gray-600">Loading pipeline analysis...</p>
-                </div>
-              </div>
-            );
-          }
-
-          // Error state
-          if (error) {
-            return (
-              <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
-                <div className="text-center bg-white p-8 rounded-xl shadow-lg max-w-md">
-                  <div className="text-red-500 text-4xl mb-4">⚠️</div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-2">Pipeline Error</h2>
-                  <p className="text-gray-600 mb-4">{error}</p>
-                  <button 
-                    className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
-                    onClick={fetchPipelineData}
-                  >
-                    Retry Loading
-                  </button>
-                </div>
-              </div>
-            );
-          }
-
-          const MQLStage = ({ title, data, color, isLast }) => (
-            <div className="flex flex-col items-center">
-              <div className={`${color} pipeline-stage rounded-lg p-4 min-w-[140px] text-center shadow-lg`}>
-                <h4 className="font-semibold text-white text-sm mb-2">{title}</h4>
-                <div className="text-2xl font-bold text-white mb-1">
-                  {formatNumber(data.count)}
-                </div>
-                {data.ctr && (
-                  <div className="text-xs text-blue-100">
-                    CTR: {formatPercentage(data.ctr)}
-                  </div>
-                )}
-                {data.conversionRate && (
-                  <div className="text-xs text-blue-100">
-                    CVR: {formatPercentage(data.conversionRate)}
-                  </div>
-                )}
-                {data.rejectionRate && (
-                  <div className="text-xs text-blue-100">
-                    Rejected: {formatPercentage(data.rejectionRate)}
-                  </div>
-                )}
-                {data.cost > 0 && (
-                  <div className="text-xs text-blue-100 mt-1">
-                    {formatCurrency(data.cost)}
-                  </div>
-                )}
-                {data.source && (
-                  <div className="text-xs text-blue-200 mt-1 opacity-75">
-                    {data.source}
-                  </div>
-                )}
-              </div>
-              {!isLast && (
-                <div className="flex items-center mt-4 mb-4">
-                  <div className="w-8 h-0.5 bg-blue-300"></div>
-                  <div className="w-2 h-2 bg-blue-400 rounded-full mx-1"></div>
-                  <div className="w-8 h-0.5 bg-blue-300"></div>
-                </div>
-              )}
-            </div>
-          );
-
-          const SQLStage = ({ title, data, color, probability, isLast }) => (
-            <div className="flex flex-col items-center">
-              <div className={`${color} pipeline-stage rounded-lg p-4 min-w-[120px] text-center shadow-lg`}>
-                <h4 className="font-semibold text-white text-xs mb-2">{title}</h4>
-                <div className="text-lg font-bold text-white mb-1">
-                  {formatNumber(data.count)}
-                </div>
-                <div className="text-xs text-orange-100">
-                  {formatPercentage(data.percentage)}
-                </div>
-                {probability && (
-                  <div className="text-xs text-orange-100 mt-1 border-t border-orange-200 pt-1">
-                    Win: {formatPercentage(probability.p_win * 100)}
-                  </div>
-                )}
-              </div>
-              {!isLast && (
-                <div className="flex items-center mt-4 mb-4">
-                  <div className="w-6 h-0.5 bg-orange-300"></div>
-                  <div className="w-2 h-2 bg-orange-400 rounded-full mx-1"></div>
-                  <div className="w-6 h-0.5 bg-orange-300"></div>
-                </div>
-              )}
-            </div>
-          );
-
-          const { summary, mqlStages, sqlStages } = pipelineData;
-
-          return (
-            <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6">
-              {/* Header */}
-              <div className="mb-8">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                  <div>
-                    <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                      Pipeline Analysis
-                    </h1>
-                    <p className="text-gray-600">
-                      Google Ads → HubSpot Direct Sales Pipeline ({summary.period})
-                    </p>
-                  </div>
-                  
-                  {/* Controls */}
-                  <div className="mt-4 lg:mt-0 flex flex-wrap gap-4">
-                    {/* Campaign Filter */}
-                    <div className="flex items-center space-x-2">
-                      <span className="text-gray-500">🎯</span>
-                      <select
-                        value={selectedCampaign}
-                        onChange={(e) => setSelectedCampaign(e.target.value)}
-                        className="bg-white border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:ring-2 focus:ring-blue-500"
-                      >
-                        {campaigns.map(campaign => (
-                          <option key={campaign.id} value={campaign.id}>
-                            {campaign.name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                    
-                    {/* Date Range */}
-                    <div className="flex items-center space-x-2">
-                      <span className="text-gray-500">📅</span>
-                      <select
-                        value={dateRange}
-                        onChange={(e) => setDateRange(e.target.value)}
-                        className="bg-white border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:ring-2 focus:ring-blue-500"
-                      >
-                        <option value="7">Last 7 days</option>
-                        <option value="30">Last 30 days</option>
-                        <option value="90">Last 90 days</option>
-                        <option value="365">Last year</option>
-                      </select>
-                    </div>
-                    
-                    {/* Probability Refresh */}
-                    <button
-                      onClick={fetchProbabilityData}
-                      disabled={showProbabilityRefresh}
-                      className="bg-purple-500 hover:bg-purple-600 disabled:bg-purple-300 text-white px-4 py-2 rounded-lg transition-colors flex items-center gap-2"
-                    >
-                      {showProbabilityRefresh ? '🔄' : '📊'}
-                      {showProbabilityRefresh ? 'Refreshing...' : 'Refresh Probabilities'}
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              {/* Summary Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-white rounded-lg p-4 shadow-lg">
-                  <div className="text-sm text-gray-600">Campaign</div>
-                  <div className="text-xl font-bold text-gray-900">{summary.campaign}</div>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-lg">
-                  <div className="text-sm text-gray-600">Total Contacts</div>
-                  <div className="text-xl font-bold text-gray-900">{formatNumber(summary.totalContacts)}</div>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-lg">
-                  <div className="text-sm text-gray-600">Total Ad Spend</div>
-                  <div className="text-xl font-bold text-gray-900">{formatCurrency(summary.totalCost)}</div>
-                </div>
-                <div className="bg-white rounded-lg p-4 shadow-lg">
-                  <div className="text-sm text-gray-600">Cost Per Contact</div>
-                  <div className="text-xl font-bold text-gray-900">
-                    {formatCurrency(summary.costPerContact)}
-                  </div>
-                </div>
-              </div>
-
-              {/* Pipeline Visualization */}
-              <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">
-                  Horizontal Pipeline Flow
-                </h3>
+            const fetchPipelineData = async () => {
+                setIsLoading(true);
+                setError(null);
                 
-                {/* MQL Stages */}
-                <div className="mb-8">
-                  <h4 className="text-lg font-medium text-blue-600 mb-4 flex items-center gap-2">
-                    <span>🎯</span> MQL Stages (Google Ads)
-                  </h4>
-                  <div className="flex items-center justify-center overflow-x-auto">
-                    <div className="flex items-center space-x-4 min-w-max">
-                      <MQLStage
-                        title="Impressions"
-                        data={mqlStages.impressions}
-                        color="bg-gradient-to-br from-blue-500 to-blue-600"
-                      />
-                      <MQLStage
-                        title="Clicks"
-                        data={mqlStages.clicks}
-                        color="bg-gradient-to-br from-blue-600 to-blue-700"
-                      />
-                      <MQLStage
-                        title="CTA Complete"
-                        data={mqlStages.ctaComplete}
-                        color="bg-gradient-to-br from-purple-500 to-purple-600"
-                      />
-                      <MQLStage
-                        title="Territory Valid"
-                        data={mqlStages.territoryValidation}
-                        color="bg-gradient-to-br from-purple-600 to-purple-700"
-                        isLast={true}
-                      />
-                    </div>
-                  </div>
-                </div>
+                try {
+                    console.log(`📊 Fetching pipeline data: ${dateRange} days, ${analysisMode} mode`);
+                    
+                    // Fetch enhanced pipeline data
+                    const [dashboardRes, mqlValidationRes, territoriesRes] = await Promise.all([
+                        fetch(`/gads/analytics/dashboard-data?days=${dateRange}&mode=${analysisMode}`),
+                        fetch(`/gads/analytics/mql-validation?days=${dateRange}&mode=${analysisMode}`),
+                        fetch(`/gads/analytics/territories?days=${dateRange}&mode=${analysisMode}`)
+                    ]);
 
-                {/* Transition Arrow */}
-                <div className="flex justify-center mb-8">
-                  <div className="flex items-center">
-                    <div className="w-16 h-1 bg-gradient-to-r from-purple-400 to-orange-400"></div>
-                    <div className="w-4 h-4 bg-orange-400 rounded-full mx-2 flex items-center justify-center">
-                      <span className="text-white text-xs">→</span>
-                    </div>
-                    <div className="w-16 h-1 bg-gradient-to-r from-orange-400 to-orange-500"></div>
-                  </div>
-                </div>
+                    const [dashboardData, mqlValidationData, territoriesData] = await Promise.all([
+                        dashboardRes.json(),
+                        mqlValidationRes.json(),
+                        territoriesRes.json()
+                    ]);
 
-                {/* SQL Stages */}
-                <div>
-                  <h4 className="text-lg font-medium text-orange-600 mb-4 flex items-center gap-2">
-                    <span>🏢</span> SQL Stages (HubSpot)
-                  </h4>
-                  <div className="flex items-center justify-center overflow-x-auto">
-                    <div className="flex items-center space-x-2 min-w-max">
-                      <SQLStage
-                        title="Inbox"
-                        data={sqlStages.inbox}
-                        color="bg-gradient-to-br from-orange-400 to-orange-500"
-                        probability={probabilityData?.completion?.appointmentscheduled}
-                      />
-                      <SQLStage
-                        title="Sequenced"
-                        data={sqlStages.sequenced}
-                        color="bg-gradient-to-br from-orange-500 to-orange-600"
-                      />
-                      <SQLStage
-                        title="Engaging"
-                        data={sqlStages.engaging}
-                        color="bg-gradient-to-br from-orange-600 to-orange-700"
-                        probability={probabilityData?.completion?.engaging}
-                      />
-                      <SQLStage
-                        title="Responsive"
-                        data={sqlStages.responsive}
-                        color="bg-gradient-to-br from-red-500 to-red-600"
-                        probability={probabilityData?.completion?.responsive}
-                      />
-                      <SQLStage
-                        title="Advising"
-                        data={sqlStages.advising}
-                        color="bg-gradient-to-br from-red-600 to-red-700"
-                        probability={probabilityData?.completion?.advising}
-                      />
-                      <SQLStage
-                        title="Consideration"
-                        data={sqlStages.consideration}
-                        color="bg-gradient-to-br from-green-500 to-green-600"
-                        probability={probabilityData?.completion?.consideration}
-                      />
-                      <SQLStage
-                        title="Contract"
-                        data={sqlStages.contract}
-                        color="bg-gradient-to-br from-green-600 to-green-700"
-                        probability={probabilityData?.completion?.contract}
-                      />
-                      <SQLStage
-                        title="Won"
-                        data={sqlStages.won}
-                        color="bg-gradient-to-br from-emerald-600 to-emerald-700"
-                        isLast={true}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    if (!dashboardData.success) throw new Error(dashboardData.error);
+                    if (!mqlValidationData.success) throw new Error(mqlValidationData.error);
+                    if (!territoriesData.success) throw new Error(territoriesData.error);
 
-              {/* Probability Analysis */}
-              {probabilityData && (
-                <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                    Stage Win Probabilities
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    {Object.entries(probabilityData.completion).map(([stage, data]) => (
-                      <div key={stage} className="bg-gray-50 rounded-lg p-3 text-center">
-                        <div className="text-sm font-medium text-gray-700 mb-1 capitalize">
-                          {stage.replace(/([A-Z])/g, ' $1').trim()}
-                        </div>
-                        <div className="text-lg font-bold text-purple-600">
-                          {formatPercentage(data.p_win * 100)}
-                        </div>
-                        <div className="text-xs text-gray-500">
-                          {formatCurrency(data.euro_value)}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+                    setPipelineData({
+                        dashboard: dashboardData,
+                        mqlValidation: mqlValidationData,
+                        territories: territoriesData
+                    });
 
-              {/* Data Source Info */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <div className="flex items-center space-x-2">
-                  <span className="text-blue-500">⚡</span>
-                  <div>
-                    <p className="text-sm font-medium text-blue-900">
-                      Data Source: MySQL Lightning Fast (26,440+ Google Ads Records)
-                    </p>
-                    <p className="text-xs text-blue-700">
-                      {pipelineData?.dataSource} | Real-time MySQL queries | 
-                      {summary?.dataQuality?.googleAdsRecords} metrics from 2014-2025
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          );
+                } catch (err) {
+                    console.error('❌ Pipeline data fetch failed:', err);
+                    setError(err.message);
+                }
+                
+                setIsLoading(false);
+            };
+
+            const refreshProbabilities = async () => {
+                try {
+                    console.log('🔄 Refreshing pipeline probabilities...');
+                    const response = await fetch('/gads/scripts/analytics/pipeline-probs.js');
+                    const result = await response.json();
+                    setProbabilities(result);
+                    alert('Pipeline probabilities refreshed successfully!');
+                } catch (err) {
+                    console.error('❌ Probability refresh failed:', err);
+                    alert('Failed to refresh probabilities: ' + err.message);
+                }
+            };
+
+            const formatNumber = (value) => {
+                return new Intl.NumberFormat().format(value || 0);
+            };
+
+            const formatCurrency = (value) => {
+                return new Intl.NumberFormat('en-US', {
+                    style: 'currency',
+                    currency: 'EUR',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0,
+                }).format(value || 0);
+            };
+
+            if (isLoading) {
+                return React.createElement('div', {
+                    className: 'min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center'
+                }, [
+                    React.createElement('div', {
+                        className: 'text-center',
+                        key: 'loading'
+                    }, [
+                        React.createElement('div', { className: 'loading mb-4', key: 'spinner' }),
+                        React.createElement('p', {
+                            className: 'text-lg text-gray-600',
+                            key: 'loading-text'
+                        }, 'Loading enhanced pipeline analysis...'),
+                        React.createElement('p', {
+                            className: 'text-sm text-gray-500 mt-2',
+                            key: 'loading-subtitle'
+                        }, `Mode: ${analysisMode}, Range: ${dateRange} days`)
+                    ])
+                ]);
+            }
+
+            if (error) {
+                return React.createElement('div', {
+                    className: 'min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center'
+                }, [
+                    React.createElement('div', {
+                        className: 'text-center bg-white p-8 rounded-xl shadow-lg max-w-md',
+                        key: 'error'
+                    }, [
+                        React.createElement('h2', {
+                            className: 'text-xl font-bold text-red-600 mb-4',
+                            key: 'error-title'
+                        }, '❌ Pipeline Analysis Error'),
+                        React.createElement('p', {
+                            className: 'text-gray-600 mb-4',
+                            key: 'error-message'
+                        }, error),
+                        React.createElement('button', {
+                            className: 'bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600',
+                            onClick: () => window.location.reload(),
+                            key: 'reload-btn'
+                        }, 'Reload Analysis')
+                    ])
+                ]);
+            }
+
+            if (!pipelineData) return null;
+
+            const { dashboard, mqlValidation, territories } = pipelineData;
+            const unsupportedTerritory = territories.territories.find(t => t.isUnsupported);
+
+            return React.createElement('div', {
+                className: 'min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6'
+            }, [
+                // Header with Enhanced Controls
+                React.createElement('div', {
+                    className: 'mb-8',
+                    key: 'header'
+                }, [
+                    React.createElement('div', {
+                        className: 'flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6',
+                        key: 'header-content'
+                    }, [
+                        React.createElement('div', { key: 'header-text' }, [
+                            React.createElement('h1', {
+                                className: 'text-3xl font-bold text-gray-900 mb-2',
+                                key: 'title'
+                            }, '📊 Enhanced Pipeline Analysis'),
+                            React.createElement('p', {
+                                className: 'text-gray-600',
+                                key: 'subtitle'
+                            }, `Complete Click→Contact→Deal→Revenue Pipeline (${dashboard.period})`)
+                        ]),
+                        
+                        React.createElement('div', {
+                            className: 'flex flex-col sm:flex-row gap-4',
+                            key: 'controls'
+                        }, [
+                            React.createElement('select', {
+                                value: analysisMode,
+                                onChange: (e) => setAnalysisMode(e.target.value),
+                                className: 'bg-white border border-gray-300 rounded-lg px-4 py-2',
+                                key: 'mode-select'
+                            }, [
+                                React.createElement('option', { value: 'pipeline', key: 'pipeline' }, 'Pipeline Analysis'),
+                                React.createElement('option', { value: 'revenue', key: 'revenue' }, 'Revenue Analysis')
+                            ]),
+                            
+                            React.createElement('select', {
+                                value: dateRange,
+                                onChange: (e) => setDateRange(e.target.value),
+                                className: 'bg-white border border-gray-300 rounded-lg px-4 py-2',
+                                key: 'date-select'
+                            }, [
+                                React.createElement('option', { value: '7', key: '7' }, 'Last 7 days'),
+                                React.createElement('option', { value: '14', key: '14' }, 'Last 14 days'),
+                                React.createElement('option', { value: '30', key: '30' }, 'Last 30 days'),
+                                React.createElement('option', { value: '60', key: '60' }, 'Last 60 days'),
+                                React.createElement('option', { value: '90', key: '90' }, 'Last 90 days')
+                            ]),
+                            
+                            React.createElement('button', {
+                                onClick: refreshProbabilities,
+                                className: 'bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors',
+                                key: 'refresh-btn'
+                            }, '🔄 Refresh Probabilities')
+                        ])
+                    ]),
+
+                    // Analysis Mode Explanation
+                    React.createElement('div', {
+                        className: 'p-4 bg-blue-50 rounded-lg border border-blue-200',
+                        key: 'mode-explanation'
+                    }, [
+                        React.createElement('div', {
+                            className: 'flex items-start space-x-2',
+                            key: 'explanation-content'
+                        }, [
+                            React.createElement('span', { className: 'text-blue-600', key: 'icon' }, 'ℹ️'),
+                            React.createElement('div', {
+                                className: 'text-sm text-blue-800',
+                                key: 'explanation-text'
+                            }, [
+                                React.createElement('strong', { key: 'mode-title' }, 
+                                    analysisMode === 'pipeline' ? 'Pipeline Analysis Mode' : 'Revenue Analysis Mode'
+                                ),
+                                React.createElement('span', { key: 'mode-desc' }, 
+                                    analysisMode === 'pipeline' 
+                                        ? ' - Filters by deal creation date (shows current pipeline state)'
+                                        : ' - Filters by deal close date (shows completed revenue only)'
+                                )
+                            ])
+                        ])
+                    ])
+                ]),
+
+                // MQL→SQL Validation Flow (Issue #2 Fix)
+                React.createElement('div', {
+                    className: 'mb-8',
+                    key: 'mql-validation-section'
+                }, [
+                    React.createElement('h2', {
+                        className: 'text-2xl font-bold text-gray-900 mb-6',
+                        key: 'mql-title'
+                    }, '🎯 Google Ads → HubSpot Conversion Pipeline'),
+                    
+                    React.createElement('div', {
+                        className: 'mql-validation-flow p-6 rounded-lg border border-gray-200 mb-6',
+                        key: 'validation-flow'
+                    }, [
+                        React.createElement('div', {
+                            className: 'grid grid-cols-1 md:grid-cols-5 gap-4 items-center',
+                            key: 'flow-stages'
+                        }, [
+                            // Stage 1: MQLs from Google Ads
+                            React.createElement('div', {
+                                className: 'text-center p-4 bg-blue-100 rounded-lg border-2 border-blue-300',
+                                key: 'mql-stage'
+                            }, [
+                                React.createElement('div', {
+                                    className: 'text-3xl font-bold text-blue-700',
+                                    key: 'mql-count'
+                                }, formatNumber(mqlValidation.mql_stage.total_mqls)),
+                                React.createElement('div', {
+                                    className: 'text-sm font-semibold text-blue-800',
+                                    key: 'mql-label'
+                                }, 'Marketing Qualified Leads'),
+                                React.createElement('div', {
+                                    className: 'text-xs text-blue-600 mt-1',
+                                    key: 'mql-source'
+                                }, 'Google Ads Clicks → Contacts')
+                            ]),
+
+                            // Stage 2: Territory Validation
+                            React.createElement('div', {
+                                className: 'text-center p-4 bg-yellow-100 rounded-lg border-2 border-yellow-300',
+                                key: 'validation-stage'
+                            }, [
+                                React.createElement('div', {
+                                    className: 'text-2xl font-bold text-yellow-700',
+                                    key: 'validation-passed'
+                                }, formatNumber(mqlValidation.mql_stage.supported_mqls)),
+                                React.createElement('div', {
+                                    className: 'text-sm font-semibold text-yellow-800',
+                                    key: 'validation-label'
+                                }, 'Territory Validation'),
+                                React.createElement('div', {
+                                    className: 'text-xs text-red-600 mt-1',
+                                    key: 'validation-burn'
+                                }, `${mqlValidation.mql_stage.unsupported_mqls} unsupported`),
+                                React.createElement('div', {
+                                    className: 'text-xs text-red-600 font-bold',
+                                    key: 'burn-rate'
+                                }, `${mqlValidation.mql_stage.burn_rate_percentage}% burn rate`)
+                            ]),
+
+                            // Stage 3: SQLs (Deals Created)
+                            React.createElement('div', {
+                                className: 'text-center p-4 bg-green-100 rounded-lg border-2 border-green-300',
+                                key: 'sql-stage'
+                            }, [
+                                React.createElement('div', {
+                                    className: 'text-2xl font-bold text-green-700',
+                                    key: 'sql-count'
+                                }, formatNumber(mqlValidation.sql_validation.total_deals_created)),
+                                React.createElement('div', {
+                                    className: 'text-sm font-semibold text-green-800',
+                                    key: 'sql-label'
+                                }, 'Sales Qualified Leads'),
+                                React.createElement('div', {
+                                    className: 'text-xs text-green-600 mt-1',
+                                    key: 'sql-rate'
+                                }, `${mqlValidation.sql_validation.validation_rate_percentage}% validation rate`)
+                            ]),
+
+                            // Stage 4: Active Pipeline
+                            React.createElement('div', {
+                                className: 'text-center p-4 bg-purple-100 rounded-lg border-2 border-purple-300',
+                                key: 'active-stage'
+                            }, [
+                                React.createElement('div', {
+                                    className: 'text-2xl font-bold text-purple-700',
+                                    key: 'active-count'
+                                }, formatNumber(mqlValidation.sql_validation.active_deals)),
+                                React.createElement('div', {
+                                    className: 'text-sm font-semibold text-purple-800',
+                                    key: 'active-label'
+                                }, 'Active Pipeline'),
+                                React.createElement('div', {
+                                    className: 'text-xs text-purple-600 mt-1',
+                                    key: 'active-desc'
+                                }, 'In Progress')
+                            ]),
+
+                            // Stage 5: Won Deals
+                            React.createElement('div', {
+                                className: 'text-center p-4 bg-emerald-100 rounded-lg border-2 border-emerald-300',
+                                key: 'won-stage'
+                            }, [
+                                React.createElement('div', {
+                                    className: 'text-2xl font-bold text-emerald-700',
+                                    key: 'won-count'
+                                }, formatNumber(mqlValidation.sql_validation.won_deals)),
+                                React.createElement('div', {
+                                    className: 'text-sm font-semibold text-emerald-800',
+                                    key: 'won-label'
+                                }, 'Won Deals'),
+                                React.createElement('div', {
+                                    className: 'text-xs text-emerald-600 mt-1',
+                                    key: 'won-desc'
+                                }, 'Paying Customers')
+                            ])
+                        ])
+                    ]),
+
+                    // Burn Rate Alert (if significant)
+                    mqlValidation.mql_stage.burn_rate_percentage > 10 && React.createElement('div', {
+                        className: 'burn-rate-alert p-4 rounded-lg border-2 mb-6',
+                        key: 'burn-alert'
+                    }, [
+                        React.createElement('div', {
+                            className: 'flex items-center space-x-3',
+                            key: 'alert-content'
+                        }, [
+                            React.createElement('span', {
+                                className: 'text-2xl',
+                                key: 'alert-icon'
+                            }, '🔥'),
+                            React.createElement('div', { key: 'alert-text' }, [
+                                React.createElement('h3', {
+                                    className: 'font-bold text-red-800',
+                                    key: 'alert-title'
+                                }, 'Burn Rate Alert'),
+                                React.createElement('p', {
+                                    className: 'text-red-700',
+                                    key: 'alert-message'
+                                }, `${mqlValidation.mql_stage.burn_rate_percentage}% of Google Ads traffic is from unsupported territories. ` +
+                                   `${mqlValidation.mql_stage.unsupported_mqls} contacts generated no revenue potential.`),
+                                React.createElement('button', {
+                                    className: 'mt-2 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700',
+                                    onClick: () => window.open('/gads/scripts/analytics/burn-rate.html', '_blank'),
+                                    key: 'burn-details-btn'
+                                }, 'View Burn Rate Details →')
+                            ])
+                        ])
+                    ])
+                ]),
+
+                // Pipeline Stages Overview
+                React.createElement('div', {
+                    className: 'grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8',
+                    key: 'pipeline-overview'
+                }, [
+                    // Deal Pipeline Stages
+                    React.createElement('div', {
+                        className: 'bg-white rounded-lg shadow p-6',
+                        key: 'deal-stages'
+                    }, [
+                        React.createElement('h3', {
+                            className: 'text-lg font-semibold text-gray-900 mb-4',
+                            key: 'stages-title'
+                        }, '📋 Deal Pipeline Stages'),
+                        
+                        React.createElement('div', {
+                            className: 'space-y-3',
+                            key: 'stages-list'
+                        }, [
+                            // Map through pipeline stages (you'll need to extract this from your data)
+                            dashboard.summary.pipeline_stages && Object.entries(dashboard.summary.pipeline_stages).map(([stageName, stageData], index) => 
+                                React.createElement('div', {
+                                    className: `pipeline-stage p-4 bg-gray-50 rounded-lg border stage-${stageName.toLowerCase().replace(/\s+/g, '-')}`,
+                                    key: `stage-${index}`
+                                }, [
+                                    React.createElement('div', {
+                                        className: 'flex justify-between items-center',
+                                        key: 'stage-header'
+                                    }, [
+                                        React.createElement('h4', {
+                                            className: 'font-medium text-gray-900',
+                                            key: 'stage-name'
+                                        }, stageName.toUpperCase()),
+                                        React.createElement('span', {
+                                            className: 'text-lg font-bold text-blue-600',
+                                            key: 'stage-count'
+                                        }, formatNumber(stageData.count))
+                                    ]),
+                                    React.createElement('div', {
+                                        className: 'mt-2 text-sm text-gray-600',
+                                        key: 'stage-details'
+                                    }, [
+                                        React.createElement('span', { key: 'value' }, `Value: ${formatCurrency(stageData.value)}`),
+                                        stageData.avg_value > 0 && React.createElement('span', { 
+                                            key: 'avg', 
+                                            className: 'ml-4' 
+                                        }, `Avg: ${formatCurrency(stageData.avg_value)}`)
+                                    ])
+                                ])
+                            )
+                        ])
+                    ]),
+
+                    // Territory Performance Summary
+                    React.createElement('div', {
+                        className: 'bg-white rounded-lg shadow p-6',
+                        key: 'territory-summary'
+                    }, [
+                        React.createElement('h3', {
+                            className: 'text-lg font-semibold text-gray-900 mb-4',
+                            key: 'territory-title'
+                        }, '🌍 Territory Performance Summary'),
+                        
+                        React.createElement('div', {
+                            className: 'space-y-4',
+                            key: 'territory-metrics'
+                        }, [
+                            // Total territories
+                            React.createElement('div', {
+                                className: 'flex justify-between items-center p-3 bg-blue-50 rounded',
+                                key: 'total-territories'
+                            }, [
+                                React.createElement('span', { key: 'label' }, 'Active Territories'),
+                                React.createElement('span', { 
+                                    key: 'count',
+                                    className: 'font-bold text-blue-600'
+                                }, territories.territories.length)
+                            ]),
+                            
+                            // Supported vs Unsupported
+                            React.createElement('div', {
+                                className: 'flex justify-between items-center p-3 bg-green-50 rounded',
+                                key: 'supported-territories'
+                            }, [
+                                React.createElement('span', { key: 'label' }, 'Supported Territories'),
+                                React.createElement('span', { 
+                                    key: 'count',
+                                    className: 'font-bold text-green-600'
+                                }, territories.territories.filter(t => !t.isUnsupported).length)
+                            ]),
+                            
+                            unsupportedTerritory && React.createElement('div', {
+                                className: 'flex justify-between items-center p-3 bg-red-50 rounded cursor-pointer hover:bg-red-100',
+                                onClick: () => window.open('/gads/scripts/analytics/burn-rate.html', '_blank'),
+                                key: 'unsupported-territory'
+                            }, [
+                                React.createElement('div', { key: 'unsupported-info' }, [
+                                    React.createElement('div', { key: 'label' }, 'Unsupported Territory'),
+                                    React.createElement('div', { 
+                                        key: 'contacts',
+                                        className: 'text-xs text-red-600'
+                                    }, `${unsupportedTerritory.contacts} contacts, ${unsupportedTerritory.deals} deals`)
+                                ]),
+                                React.createElement('span', { 
+                                    key: 'burn-rate',
+                                    className: 'font-bold text-red-600'
+                                }, `${territories.burnRateSummary.burnRatePercentage}% burn`)
+                            ])
+                        ])
+                    ])
+                ]),
+
+                // Footer
+                React.createElement('div', {
+                    className: 'text-center text-sm text-gray-500 mt-8',
+                    key: 'footer'
+                }, [
+                    React.createElement('p', { key: 'footer-text' }, 
+                        `Pipeline Analysis updated: ${new Date().toLocaleString()} | ` +
+                        `Mode: ${analysisMode} | Range: ${dateRange} days`
+                    ),
+                    React.createElement('p', { key: 'footer-note', className: 'mt-2' }, 
+                        'Enhanced with MQL→SQL validation tracking and territory burn rate analysis'
+                    )
+                ])
+            ]);
         };
-        
-        // Render the dashboard
-        const root = ReactDOM.createRoot(document.getElementById('root'));
+
+        // Render the component
+        const container = document.getElementById('pipeline-root');
+        const root = ReactDOM.createRoot(container);
         root.render(React.createElement(PipelineAnalysis));
-    </script>
-    
-    <!-- Error Handling -->
-    <script>
-      window.onerror = function(msg, url, line, col, error) {
-        console.error('Pipeline Error:', msg, 'at', url, ':', line);
-        document.getElementById('root').innerHTML = 
-          '<div class="min-h-screen bg-red-50 flex items-center justify-center">' +
-          '<div class="text-center p-8">' +
-          '<h1 class="text-2xl font-bold text-red-600 mb-4">Pipeline Error</h1>' +
-          '<p class="text-red-500 mb-2">' + msg + '</p>' +
-          '<p class="text-gray-500 text-sm">Check console for details</p>' +
-          '</div></div>';
-        return true;
-      };
     </script>
 </body>
 </html>

@@ -1,70 +1,83 @@
 /**
- * Google Ads Dashboard - Real HubSpot Data from MySQL
+ * Google Ads Dashboard - FIXED VERSION
  * /scripts/analytics/dashboard.js
- * UPDATED: Now displays Campaign ID, Campaign Name, and AdGroup
+ * 
+ * FIXES:
+ * - Removed syntax errors
+ * - Fixed API endpoint calls
+ * - Simplified for compatibility
+ * - Enhanced error handling
  */
 
 const GoogleAdsDashboard = () => {
   const [dateRange, setDateRange] = React.useState('7');
+  const [analysisMode, setAnalysisMode] = React.useState('pipeline');
+  const [selectedCampaign, setSelectedCampaign] = React.useState('all');
   const [isLoading, setIsLoading] = React.useState(true);
   const [dashboardData, setDashboardData] = React.useState(null);
   const [error, setError] = React.useState(null);
 
-  // Fetch dashboard data on load and when date range changes
+  // Fetch dashboard data when parameters change
   React.useEffect(() => {
     fetchDashboardData();
-  }, [dateRange]);
+  }, [dateRange, analysisMode, selectedCampaign]);
 
-  // Fetch data from HubSpot MySQL APIs
+  // Fetch data from APIs
   const fetchDashboardData = async () => {
     setIsLoading(true);
     setError(null);
     
     try {
-      console.log(`📊 Fetching dashboard data for ${dateRange} days...`);
+      console.log(`📊 Fetching dashboard data: ${dateRange} days, ${analysisMode} mode`);
       
-      // Fetch all data in parallel
-      const [summaryRes, trendsRes, campaignsRes, territoriesRes] = await Promise.all([
-        fetch(`/gads/api/dashboard-data?days=${dateRange}`),
-        fetch(`/gads/api/trends?days=${dateRange}`),
-        fetch(`/gads/api/campaigns?days=${dateRange}`),
-        fetch(`/gads/api/territories?days=${dateRange}`)
+      // Build API URLs
+      const baseParams = `days=${dateRange}&mode=${analysisMode}`;
+      
+      // Fetch data in parallel
+      const [summaryRes, campaignsRes, territoriesRes] = await Promise.all([
+        fetch(`/gads/analytics/dashboard-data?${baseParams}`),
+        fetch(`/gads/analytics/campaigns?${baseParams}`),
+        fetch(`/gads/analytics/territories?${baseParams}`)
       ]);
 
-      const [summaryData, trendsData, campaignsData, territoriesData] = await Promise.all([
+      // Check for errors
+      if (!summaryRes.ok) throw new Error(`Summary API failed: ${summaryRes.status}`);
+      if (!campaignsRes.ok) throw new Error(`Campaigns API failed: ${campaignsRes.status}`);
+      if (!territoriesRes.ok) throw new Error(`Territories API failed: ${territoriesRes.status}`);
+
+      const [summaryData, campaignsData, territoriesData] = await Promise.all([
         summaryRes.json(),
-        trendsRes.json(),
         campaignsRes.json(),
         territoriesRes.json()
       ]);
 
-      // Check for API errors
-      if (!summaryData.success) throw new Error(summaryData.error || 'Failed to fetch summary data');
-      if (!trendsData.success) throw new Error(trendsData.error || 'Failed to fetch trend data');
-      if (!campaignsData.success) throw new Error(campaignsData.error || 'Failed to fetch campaign data');
-      if (!territoriesData.success) throw new Error(territoriesData.error || 'Failed to fetch territory data');
+      // Check API success
+      if (!summaryData.success) throw new Error(summaryData.error || 'Summary failed');
+      if (!campaignsData.success) throw new Error(campaignsData.error || 'Campaigns failed');
+      if (!territoriesData.success) throw new Error(territoriesData.error || 'Territories failed');
 
-      // Combine all data
+      // Combine data
       const combinedData = {
         summary: summaryData.summary,
-        trends: trendsData.trends || [],
         campaigns: campaignsData.campaigns || [],
         territories: territoriesData.territories || [],
-        period: summaryData.period
+        mqlValidation: summaryData.mql_validation_details,
+        period: summaryData.period,
+        analysisMode: analysisMode
       };
 
       console.log('✅ Dashboard data loaded:', combinedData);
       setDashboardData(combinedData);
 
     } catch (err) {
-      console.error('❌ Failed to fetch dashboard data:', err);
+      console.error('❌ Dashboard data fetch failed:', err);
       setError(err.message);
     }
     
     setIsLoading(false);
   };
 
-  // Format currency
+  // Format functions
   const formatCurrency = (value) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -78,9 +91,17 @@ const GoogleAdsDashboard = () => {
     return new Intl.NumberFormat().format(value || 0);
   };
 
-  // Handle date range change
+  // Event handlers
   const handleDateRangeChange = (newRange) => {
     setDateRange(newRange);
+  };
+
+  const handleAnalysisModeChange = (newMode) => {
+    setAnalysisMode(newMode);
+  };
+
+  const handleCampaignChange = (newCampaign) => {
+    setSelectedCampaign(newCampaign);
   };
 
   // Loading state
@@ -93,9 +114,9 @@ const GoogleAdsDashboard = () => {
         key: 'loading'
       }, [
         React.createElement('div', {
-          className: 'loading mb-4',
+          className: 'text-4xl mb-4',
           key: 'spinner'
-        }),
+        }, '🔄'),
         React.createElement('p', {
           className: 'text-lg text-gray-600',
           key: 'loading-text'
@@ -103,7 +124,7 @@ const GoogleAdsDashboard = () => {
         React.createElement('p', {
           className: 'text-sm text-gray-500 mt-2',
           key: 'loading-subtitle'
-        }, `Fetching ${dateRange} days of HubSpot data with campaign details`)
+        }, `${dateRange} days (${analysisMode} mode)`)
       ])
     ]);
   }
@@ -117,68 +138,56 @@ const GoogleAdsDashboard = () => {
         className: 'text-center bg-white p-8 rounded-xl shadow-lg max-w-md',
         key: 'error'
       }, [
-        React.createElement('div', {
-          className: 'text-red-500 text-4xl mb-4',
-          key: 'error-icon'
-        }, '⚠️'),
         React.createElement('h2', {
-          className: 'text-xl font-bold text-gray-900 mb-2',
+          className: 'text-xl font-bold text-red-600 mb-4',
           key: 'error-title'
-        }, 'Dashboard Error'),
+        }, '❌ Dashboard Error'),
         React.createElement('p', {
           className: 'text-gray-600 mb-4',
           key: 'error-message'
         }, error),
         React.createElement('button', {
-          className: 'bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors',
-          onClick: fetchDashboardData,
-          key: 'retry-button'
-        }, 'Retry Loading')
+          className: 'bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600',
+          onClick: () => window.location.reload(),
+          key: 'reload-btn'
+        }, 'Reload Dashboard')
       ])
     ]);
   }
 
-  // Stat Card Component
-  const StatCard = ({ icon, title, value, subtitle, trend }) => (
-    React.createElement('div', {
-      className: 'bg-white rounded-xl shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 card-hover'
+  // Helper function to create metric cards
+  const createMetricCard = (title, value, trend, icon, color = 'blue') => {
+    return React.createElement('div', {
+      className: 'bg-white rounded-lg shadow p-6',
+      key: `card-${title.replace(/\s+/g, '-').toLowerCase()}`
     }, [
       React.createElement('div', {
         className: 'flex items-center justify-between',
-        key: 'card-content'
+        key: 'card-header'
       }, [
-        React.createElement('div', {
-          className: 'flex items-center space-x-3',
-          key: 'card-main'
-        }, [
-          React.createElement('div', {
-            className: 'p-2 bg-blue-50 rounded-lg',
-            key: 'card-icon'
-          }, icon),
-          React.createElement('div', { key: 'card-text' }, [
-            React.createElement('p', {
-              className: 'text-sm font-medium text-gray-600',
-              key: 'card-title'
-            }, title),
-            React.createElement('p', {
-              className: 'text-2xl font-bold text-gray-900',
-              key: 'card-value'
-            }, value),
-            subtitle && React.createElement('p', {
-              className: 'text-xs text-gray-500',
-              key: 'card-subtitle'
-            }, subtitle)
-          ])
+        React.createElement('div', { key: 'card-content' }, [
+          React.createElement('p', {
+            className: 'text-sm font-medium text-gray-600',
+            key: 'card-title'
+          }, title),
+          React.createElement('p', {
+            className: `text-2xl font-bold text-${color}-600`,
+            key: 'card-value'
+          }, value)
         ]),
-        trend && React.createElement('div', {
-          className: 'text-sm text-green-600',
-          key: 'card-trend'
-        }, trend)
-      ])
-    ])
-  );
+        React.createElement('div', {
+          className: `text-${color}-600`,
+          key: 'card-icon'
+        }, icon)
+      ]),
+      trend && React.createElement('div', {
+        className: 'text-sm text-green-600 mt-2',
+        key: 'card-trend'
+      }, trend)
+    ]);
+  };
 
-  const { summary, campaigns, territories } = dashboardData;
+  const { summary, campaigns, territories, mqlValidation } = dashboardData;
 
   return React.createElement('div', {
     className: 'min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6'
@@ -189,7 +198,7 @@ const GoogleAdsDashboard = () => {
       key: 'header'
     }, [
       React.createElement('div', {
-        className: 'flex flex-col md:flex-row md:items-center md:justify-between',
+        className: 'flex flex-col lg:flex-row lg:items-center lg:justify-between',
         key: 'header-content'
       }, [
         React.createElement('div', { key: 'header-text' }, [
@@ -200,289 +209,217 @@ const GoogleAdsDashboard = () => {
           React.createElement('p', {
             className: 'text-gray-600',
             key: 'subtitle'
-          }, `Real HubSpot data with Campaign ID, Name & AdGroup (${dashboardData.period})`)
+          }, `Real HubSpot data from MySQL (${dashboardData.period})`)
         ]),
         
-        // Date Range Selector
+        // Controls Panel
         React.createElement('div', {
-          className: 'mt-4 md:mt-0',
-          key: 'date-selector'
+          className: 'mt-4 lg:mt-0 grid grid-cols-1 md:grid-cols-3 gap-4',
+          key: 'controls-panel'
         }, [
+          // Date Range
           React.createElement('div', {
-            className: 'flex items-center space-x-2',
-            key: 'date-controls'
+            className: 'flex flex-col',
+            key: 'date-selector'
           }, [
-            React.createElement('span', {
-              key: 'calendar-icon',
-              className: 'text-gray-500'
-            }, '📅'),
+            React.createElement('label', {
+              className: 'text-sm font-medium text-gray-700 mb-1',
+              key: 'date-label'
+            }, 'Date Range'),
             React.createElement('select', {
               value: dateRange,
               onChange: (e) => handleDateRangeChange(e.target.value),
-              className: 'bg-white border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent',
+              className: 'bg-white border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:ring-2 focus:ring-blue-500',
               key: 'date-select'
             }, [
               React.createElement('option', { value: '7', key: '7' }, 'Last 7 days'),
+              React.createElement('option', { value: '14', key: '14' }, 'Last 14 days'),
               React.createElement('option', { value: '30', key: '30' }, 'Last 30 days'),
-              React.createElement('option', { value: '90', key: '90' }, 'Last 90 days'),
-              React.createElement('option', { value: '365', key: '365' }, 'Last year')
-            ])
-          ])
-        ])
-      ])
-    ]),
-
-    // Key Metrics from real HubSpot data
-    React.createElement('div', {
-      className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8',
-      key: 'metrics'
-    }, [
-      React.createElement(StatCard, {
-        icon: '👥',
-        title: 'Google Ads Contacts',
-        value: formatNumber(summary.totalContacts),
-        subtitle: 'From PAID_SEARCH source',
-        key: 'contacts-card'
-      }),
-      // BURN RATE CARD - Fixed link
-      React.createElement('div', {
-        className: 'bg-red-50 border border-red-200 rounded-xl p-6 cursor-pointer hover:bg-red-100 transition-all duration-200 transform hover:scale-105',
-        onClick: () => window.open('/gads/scripts/analytics/burn-rate.html', '_blank'),
-        key: 'burn-rate-card'
-      }, [
-        React.createElement('div', {
-          className: 'flex items-center gap-3 mb-3',
-          key: 'burn-rate-header'
-        }, [
-          React.createElement('div', {
-            className: 'text-3xl',
-            key: 'burn-rate-icon'
-          }, '🔥'),
-          React.createElement('div', {
-            key: 'burn-rate-info'
-          }, [
-            React.createElement('h3', {
-              className: 'font-semibold text-red-800 text-lg',
-              key: 'burn-rate-title'
-            }, 'Burn Rate'),
-            React.createElement('p', {
-              className: 'text-sm text-red-600',
-              key: 'burn-rate-subtitle'
-            }, 'Click to analyze waste')
-          ])
-        ]),
-        React.createElement('div', {
-          className: 'text-2xl font-bold text-red-700',
-          key: 'burn-rate-value'
-        }, territories.find(t => t.isUnsupported) ? 
-          `${((territories.find(t => t.isUnsupported).contacts / summary.totalContacts) * 100).toFixed(1)}%` : 
-          '0%')
-      ]),
-      React.createElement(StatCard, {
-        icon: '🎯',
-        title: 'Deals Created',
-        value: formatNumber(summary.totalDeals),
-        subtitle: `${summary.conversionRate}% conversion rate`,
-        key: 'deals-card'
-      }),
-      React.createElement(StatCard, {
-        icon: '💰',
-        title: 'Pipeline Revenue',
-        value: formatCurrency(summary.totalRevenue),
-        subtitle: `Avg: ${formatCurrency(summary.avgDealValue)}`,
-        key: 'revenue-card'
-      }),
-      React.createElement(StatCard, {
-        icon: '📈',
-        title: 'Contacts with Deals',
-        value: formatNumber(summary.contactsWithDeals),
-        subtitle: `${((summary.contactsWithDeals / summary.totalContacts) * 100).toFixed(1)}% have deals`,
-        key: 'conversion-card'
-      })
-    ]),
-
-    // Campaign Performance Table - UPDATED with Campaign ID, Name, AdGroup
-    React.createElement('div', {
-      className: 'bg-white rounded-xl shadow-lg border border-gray-100 mb-8',
-      key: 'campaigns-table'
-    }, [
-      React.createElement('div', {
-        className: 'p-6 border-b border-gray-200',
-        key: 'table-header'
-      }, [
-        React.createElement('h3', {
-          className: 'text-lg font-semibold text-gray-900',
-          key: 'table-title'
-        }, `Campaign Performance (${campaigns.length} campaigns)`),
-        React.createElement('p', {
-          className: 'text-sm text-gray-500 mt-1',
-          key: 'table-subtitle'
-        }, 'Now showing Campaign ID, Campaign Name & AdGroup from HubSpot')
-      ]),
-      
-      campaigns.length > 0 ? React.createElement('div', {
-        className: 'overflow-x-auto',
-        key: 'table-container'
-      }, [
-        React.createElement('table', {
-          className: 'min-w-full divide-y divide-gray-200',
-          key: 'campaigns-table-element'
-        }, [
-          React.createElement('thead', {
-            className: 'bg-gray-50',
-            key: 'table-head'
-          }, [
-            React.createElement('tr', { key: 'header-row' }, [
-              React.createElement('th', {
-                className: 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
-                key: 'campaign-name-header'
-              }, 'Campaign Name'),
-              React.createElement('th', {
-                className: 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
-                key: 'campaign-id-header'
-              }, 'Campaign ID'),
-              React.createElement('th', {
-                className: 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
-                key: 'adgroup-header'
-              }, 'AdGroup'),
-              React.createElement('th', {
-                className: 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
-                key: 'contacts-header'
-              }, 'Contacts'),
-              React.createElement('th', {
-                className: 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
-                key: 'deals-header'
-              }, 'Deals'),
-              React.createElement('th', {
-                className: 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
-                key: 'conversion-header'
-              }, 'SQL Rate'),
-              React.createElement('th', {
-                className: 'px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider',
-                key: 'revenue-header'
-              }, 'Revenue'),
+              React.createElement('option', { value: '60', key: '60' }, 'Last 60 days'),
+              React.createElement('option', { value: '90', key: '90' }, 'Last 90 days')
             ])
           ]),
-          React.createElement('tbody', {
-            className: 'bg-white divide-y divide-gray-200',
-            key: 'table-body'
-          }, campaigns.map((campaign, index) =>
-            React.createElement('tr', {
-              className: 'hover:bg-gray-50 transition-colors duration-200',
-              key: `campaign-${index}`
+
+          // Analysis Mode
+          React.createElement('div', {
+            className: 'flex flex-col',
+            key: 'analysis-mode-selector'
+          }, [
+            React.createElement('label', {
+              className: 'text-sm font-medium text-gray-700 mb-1',
+              key: 'mode-label'
+            }, 'Analysis Mode'),
+            React.createElement('select', {
+              value: analysisMode,
+              onChange: (e) => handleAnalysisModeChange(e.target.value),
+              className: 'bg-white border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:ring-2 focus:ring-blue-500',
+              key: 'mode-select'
             }, [
-              // Campaign Name (google_campaign_name)
-              React.createElement('td', {
-                className: 'px-6 py-4 text-sm font-medium text-gray-900',
-                key: 'campaign-name'
-              }, [
-                React.createElement('div', {
-                  className: 'font-bold text-blue-600',
-                  key: 'name-main'
-                }, campaign.googleCampaignName || campaign.name || 'Unknown Campaign'),
-                React.createElement('div', {
-                  className: 'text-xs text-gray-400 mt-1',
-                  key: 'name-source'
-                }, 'google_campaign_name')
-              ]),
-              
-              // Campaign ID (google_campaign_id or fallback)
-              React.createElement('td', {
-                className: 'px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono',
-                key: 'campaign-id',
-                title: 'Google Ads Campaign ID'
-              }, [
-                React.createElement('div', {
-                  className: 'bg-gray-100 px-2 py-1 rounded text-xs',
-                  key: 'id-display'
-                }, campaign.googleCampaignId || campaign.campaignId || 'N/A'),
-                React.createElement('div', {
-                  className: 'text-xs text-gray-400 mt-1',
-                  key: 'id-source'
-                }, 'google_campaign_id')
-              ]),
-              
-              // AdGroup (adgroup)
-              React.createElement('td', {
-                className: 'px-6 py-4 whitespace-nowrap text-sm text-gray-500',
-                key: 'adgroup'
-              }, [
-                React.createElement('div', {
-                  className: 'text-sm text-gray-700',
-                  key: 'adgroup-main'
-                }, campaign.adgroup || 'Not specified'),
-                React.createElement('div', {
-                  className: 'text-xs text-gray-400 mt-1',
-                  key: 'adgroup-source'
-                }, 'adgroup')
-              ]),
-              
-              React.createElement('td', {
-                className: 'px-6 py-4 whitespace-nowrap text-sm text-gray-500',
-                key: 'contacts'
-              }, formatNumber(campaign.contacts)),
-              React.createElement('td', {
-                className: 'px-6 py-4 whitespace-nowrap text-sm text-gray-500',
-                key: 'deals'
-              }, formatNumber(campaign.deals)),
-              React.createElement('td', {
-                className: 'px-6 py-4 whitespace-nowrap text-sm font-medium',
-                key: 'conversion'
-              }, React.createElement('span', {
-                className: `inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                  parseFloat(campaign.conversionRate) > 20 ? 'bg-green-100 text-green-800' :
-                  parseFloat(campaign.conversionRate) > 10 ? 'bg-yellow-100 text-yellow-800' :
-                  'bg-red-100 text-red-800'
-                }`
-              }, `${campaign.conversionRate}%`)),
-              React.createElement('td', {
-                className: 'px-6 py-4 whitespace-nowrap text-sm text-gray-500',
-                key: 'revenue'
-              }, formatCurrency(campaign.revenue))
+              React.createElement('option', { value: 'pipeline', key: 'pipeline' }, 'Pipeline Analysis'),
+              React.createElement('option', { value: 'revenue', key: 'revenue' }, 'Revenue Analysis')
             ])
-          ))
+          ]),
+
+          // Campaign Filter
+          React.createElement('div', {
+            className: 'flex flex-col',
+            key: 'campaign-selector'
+          }, [
+            React.createElement('label', {
+              className: 'text-sm font-medium text-gray-700 mb-1',
+              key: 'campaign-label'
+            }, 'Campaign Filter'),
+            React.createElement('select', {
+              value: selectedCampaign,
+              onChange: (e) => handleCampaignChange(e.target.value),
+              className: 'bg-white border border-gray-300 rounded-lg px-3 py-2 text-gray-900 focus:ring-2 focus:ring-blue-500',
+              key: 'campaign-select'
+            }, [
+              React.createElement('option', { value: 'all', key: 'all' }, 'All Campaigns'),
+              ...campaigns.slice(0, 10).map((campaign, index) => 
+                React.createElement('option', { 
+                  value: campaign.name, 
+                  key: `campaign-${index}` 
+                }, campaign.name)
+              )
+            ])
+          ])
         ])
-      ]) : React.createElement('div', {
-        className: 'p-8 text-center',
-        key: 'no-campaigns'
+      ]),
+
+      // Mode Explanation
+      React.createElement('div', {
+        className: 'mt-4 p-4 bg-blue-50 rounded-lg border border-blue-200',
+        key: 'mode-explanation'
       }, [
-        React.createElement('p', {
-          className: 'text-gray-500',
-          key: 'no-campaigns-text'
-        }, 'No campaign data available for this period')
+        React.createElement('div', {
+          className: 'flex items-start space-x-2',
+          key: 'explanation-content'
+        }, [
+          React.createElement('div', {
+            className: 'text-blue-600',
+            key: 'info-icon'
+          }, 'ℹ️'),
+          React.createElement('div', {
+            className: 'text-sm text-blue-800',
+            key: 'explanation-text'
+          }, [
+            React.createElement('strong', { key: 'mode-title' }, 
+              analysisMode === 'pipeline' ? 'Pipeline Analysis Mode' : 'Revenue Analysis Mode'
+            ),
+            React.createElement('span', { key: 'mode-desc' }, 
+              analysisMode === 'pipeline' 
+                ? ' - Shows deals created in date range (up-to-the-minute pipeline data)'
+                : ' - Shows deals closed in date range (revenue focus, excludes active pipeline)'
+            )
+          ])
+        ])
       ])
     ]),
 
-    // Territory Performance (Real HubSpot Data)
-    React.createElement('div', {
-      className: 'bg-white rounded-xl shadow-lg border border-gray-100 mb-8',
-      key: 'territories-section'
+    // MQL Validation Section
+    mqlValidation && mqlValidation.success && React.createElement('div', {
+      className: 'mb-8',
+      key: 'mql-validation-section'
     }, [
+      React.createElement('h2', {
+        className: 'text-xl font-bold text-gray-900 mb-4',
+        key: 'mql-title'
+      }, '🎯 MQL → SQL Validation Pipeline'),
+      
       React.createElement('div', {
-        className: 'p-6 border-b border-gray-200',
-        key: 'territories-header'
+        className: 'grid grid-cols-1 md:grid-cols-4 gap-6',
+        key: 'mql-metrics'
+      }, [
+        createMetricCard(
+          'Total MQLs',
+          formatNumber(mqlValidation.mql_stage.total_mqls),
+          null,
+          '🎯',
+          'blue'
+        ),
+        createMetricCard(
+          'Territory Validation',
+          `${formatNumber(mqlValidation.mql_stage.supported_mqls)} passed`,
+          `${mqlValidation.mql_stage.burn_rate_percentage}% burn rate`,
+          '🌍',
+          'green'
+        ),
+        createMetricCard(
+          'SQLs Created',
+          formatNumber(mqlValidation.sql_validation.total_deals_created),
+          `${mqlValidation.sql_validation.validation_rate_percentage}% conversion`,
+          '📋',
+          'purple'
+        ),
+        createMetricCard(
+          'Won Deals',
+          formatNumber(mqlValidation.sql_validation.won_deals),
+          mqlValidation.sql_validation.lost_deals > 0 ? `${mqlValidation.sql_validation.lost_deals} lost` : null,
+          '🏆',
+          'green'
+        )
+      ])
+    ]),
+
+    // Key Metrics Summary
+    React.createElement('div', {
+      className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8',
+      key: 'metrics-grid'
+    }, [
+      createMetricCard(
+        'Total Deals',
+        formatNumber(summary.total_deals),
+        summary.active_deals > 0 ? `${summary.active_deals} active` : null,
+        '📊'
+      ),
+      createMetricCard(
+        'Won Deals',
+        formatNumber(summary.won_deals),
+        summary.lost_deals > 0 ? `${summary.lost_deals} lost` : null,
+        '🏆',
+        'green'
+      ),
+      createMetricCard(
+        'Total Revenue',
+        formatCurrency(summary.total_value),
+        summary.avg_deal_size > 0 ? `Avg: ${formatCurrency(summary.avg_deal_size)}` : null,
+        '💰',
+        'green'
+      ),
+      createMetricCard(
+        'Conversion Rate',
+        `${summary.conversion_rate}%`,
+        null,
+        '📈',
+        'purple'
+      )
+    ]),
+
+    // Territory and Campaign Analysis
+    React.createElement('div', {
+      className: 'grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8',
+      key: 'analysis-section'
+    }, [
+      // Territory Performance
+      React.createElement('div', {
+        className: 'bg-white rounded-lg shadow p-6',
+        key: 'territory-performance'
       }, [
         React.createElement('h3', {
-          className: 'text-lg font-semibold text-gray-900',
-          key: 'territories-title'
-        }, `Territory Performance (${territories.length} countries)`),
-        React.createElement('p', {
-          className: 'text-sm text-gray-500 mt-1',
-          key: 'territories-subtitle'
-        }, 'Based on country and ip_country fields')
-      ]),
-      
-      territories.length > 0 ? React.createElement('div', {
-        className: 'p-6',
-        key: 'territories-content'
-      }, [
+          className: 'text-lg font-semibold text-gray-900 mb-4',
+          key: 'territory-title'
+        }, '🌍 Territory Performance'),
+        
         React.createElement('div', {
-          className: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4',
-          key: 'territories-grid'
-        }, territories.slice(0, 9).map((territory, index) =>
+          className: 'space-y-4',
+          key: 'territory-list'
+        }, territories.slice(0, 8).map((territory, index) => 
           React.createElement('div', {
-            className: `bg-gray-50 rounded-lg p-4 hover:bg-gray-100 transition-colors ${
-              territory.name === 'Unsupported Territory' ? 'cursor-pointer hover:bg-red-50 border border-red-200' : ''
+            className: `p-4 rounded-lg border ${
+              territory.name === 'Unsupported Territory' ? 
+              'cursor-pointer hover:bg-red-50 border border-red-200 bg-red-25' : 
+              'border-gray-200'
             }`,
             onClick: territory.name === 'Unsupported Territory' ? 
               () => window.open('/gads/scripts/analytics/burn-rate.html', '_blank') : 
@@ -512,61 +449,64 @@ const GoogleAdsDashboard = () => {
               }, `👥 ${formatNumber(territory.contacts)} contacts`),
               React.createElement('div', {
                 key: 'deals-stat'
-              }, `🎯 ${formatNumber(territory.deals)} deals`),
+              }, `🎯 ${formatNumber(territory.deals || territory.deals_created)} deals`),
               React.createElement('div', {
                 key: 'revenue-stat'
               }, `💰 ${formatCurrency(territory.revenue)}`),
               React.createElement('div', {
                 key: 'conversion-stat'
-              }, `📊 ${territory.conversionRate}% conversion`),
-              // Fixed burn rate indicator - now clickable and properly linked
-              territory.name === 'Unsupported Territory' ? 
-                React.createElement('div', {
-                  key: 'burn-rate-indicator',
-                  className: 'text-red-600 font-medium flex items-center gap-1'
-                }, [
-                  React.createElement('span', { key: 'fire-icon' }, '🔥'),
-                  React.createElement('span', { key: 'burn-text' }, 'Click to analyze burn rate')
-                ]) : null
+              }, `📊 ${territory.mql_to_sql_rate || territory.conversion_rate}% conversion`),
+              territory.name === 'Unsupported Territory' && React.createElement('div', {
+                className: 'text-red-600 font-medium',
+                key: 'burn-indicator'
+              }, '🔥 BURN RATE ALERT - Click for details')
             ])
           ])
         ))
-      ]) : React.createElement('div', {
-        className: 'p-8 text-center',
-        key: 'no-territories'
-      }, [
-        React.createElement('p', {
-          className: 'text-gray-500',
-          key: 'no-territories-text'
-        }, 'No territory data available for this period')
-      ])
-    ]),
+      ]),
 
-    // Data Source Info - UPDATED
-    React.createElement('div', {
-      className: 'bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8',
-      key: 'data-info'
-    }, [
+      // Campaign Performance
       React.createElement('div', {
-        className: 'flex items-center space-x-2',
-        key: 'data-info-content'
+        className: 'bg-white rounded-lg shadow p-6',
+        key: 'campaign-performance'
       }, [
-        React.createElement('span', {
-          key: 'info-icon',
-          className: 'text-blue-500'
-        }, 'ℹ️'),
+        React.createElement('h3', {
+          className: 'text-lg font-semibold text-gray-900 mb-4',
+          key: 'campaign-title'
+        }, '🎯 Campaign Performance'),
+        
         React.createElement('div', {
-          key: 'info-text'
-        }, [
-          React.createElement('p', {
-            className: 'text-sm font-medium text-blue-900',
-            key: 'info-title'
-          }, 'Data Source: HubSpot MySQL Database with Campaign Details'),
-          React.createElement('p', {
-            className: 'text-xs text-blue-700',
-            key: 'info-details'
-          }, `PAID_SEARCH contacts with google_campaign_id, google_campaign_name & adgroup | Last sync: ${new Date().toLocaleString()} | ${summary.totalContacts} total contacts found`)
-        ])
+          className: 'space-y-4',
+          key: 'campaign-list'
+        }, campaigns.slice(0, 8).map((campaign, index) => 
+          React.createElement('div', {
+            className: 'p-4 border border-gray-200 rounded-lg',
+            key: `campaign-${index}`
+          }, [
+            React.createElement('div', {
+              className: 'flex items-center justify-between mb-2',
+              key: 'campaign-header'
+            }, [
+              React.createElement('h4', {
+                className: 'font-medium text-gray-900 truncate',
+                key: 'campaign-name'
+              }, campaign.name),
+              React.createElement('span', {
+                className: 'text-sm text-green-600 font-medium',
+                key: 'campaign-won'
+              }, `${campaign.won_deals} won`)
+            ]),
+            React.createElement('div', {
+              className: 'grid grid-cols-2 gap-4 text-sm text-gray-600',
+              key: 'campaign-stats'
+            }, [
+              React.createElement('div', { key: 'contacts' }, `👥 ${formatNumber(campaign.contacts)} contacts`),
+              React.createElement('div', { key: 'deals' }, `🎯 ${formatNumber(campaign.deals)} deals`),
+              React.createElement('div', { key: 'revenue' }, `💰 ${formatCurrency(campaign.revenue)}`),
+              React.createElement('div', { key: 'rate' }, `📊 ${campaign.mql_to_sql_rate || campaign.conversion_rate}%`)
+            ])
+          ])
+        ))
       ])
     ]),
 
@@ -575,9 +515,19 @@ const GoogleAdsDashboard = () => {
       className: 'mt-8 text-center text-sm text-gray-500',
       key: 'footer'
     }, [
-      React.createElement('p', {
-        key: 'footer-text'
-      }, `Dashboard updated: ${new Date().toLocaleString()} | Enhanced with Campaign ID, Name & AdGroup data`)
+      React.createElement('p', { key: 'footer-text' }, 
+        `Dashboard updated: ${new Date().toLocaleString()} | ` +
+        `Mode: ${analysisMode === 'pipeline' ? 'Pipeline Analysis' : 'Revenue Analysis'} | ` +
+        `Campaign: ${selectedCampaign === 'all' ? 'All Campaigns' : selectedCampaign}`
+      ),
+      React.createElement('p', { key: 'footer-note', className: 'mt-2' }, 
+        'Data source: Real HubSpot CRM data synchronized to MySQL | Enhanced with schema corrections'
+      )
     ])
   ]);
 };
+
+// Render the dashboard
+const container = document.getElementById('dashboard-root');
+const root = ReactDOM.createRoot(container);
+root.render(React.createElement(GoogleAdsDashboard));

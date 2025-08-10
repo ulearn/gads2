@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔥 Burn Rate Analysis - Google Ads Waste Detection</title>
+    <title>🔥 Burn Rate Analysis - Enhanced | Google Ads Waste Detection</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         * {
@@ -46,6 +46,21 @@
             color: #7f8c8d;
             font-size: 1.1rem;
             line-height: 1.6;
+        }
+
+        .enhanced-badge {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
 
         .stats-grid {
@@ -94,8 +109,12 @@
             color: #3498db;
         }
 
-        .territories-count {
+        .validation-rate {
             color: #9b59b6;
+        }
+
+        .territories-count {
+            color: #27ae60;
         }
 
         .main-content {
@@ -188,14 +207,6 @@
             background-color: #f8f9fa;
         }
 
-        .campaign-id {
-            font-family: 'Monaco', 'Menlo', monospace;
-            background: #ecf0f1;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-
         .unsupported-contacts {
             background: linear-gradient(45deg, #e74c3c, #c0392b);
             color: white;
@@ -218,24 +229,6 @@
             color: #7f8c8d;
         }
 
-        .exclusions {
-            background: #2ecc71;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            margin: 2px;
-            display: inline-block;
-        }
-
-        .no-exclusions {
-            background: #e74c3c;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-        }
-
         .loading {
             text-align: center;
             padding: 50px;
@@ -244,6 +237,14 @@
 
         .error {
             background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .success {
+            background: #27ae60;
             color: white;
             padding: 15px;
             border-radius: 10px;
@@ -265,7 +266,8 @@
             font-size: 0.75rem;
             font-weight: 500;
         }
-.chart-container {
+
+        .chart-container {
             background: white;
             border-radius: 15px;
             padding: 25px;
@@ -305,6 +307,39 @@
             font-family: monospace;
             font-size: 0.9rem;
         }
+
+        .mql-validation-summary {
+            background: #3498db;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .validation-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .flow-step {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .flow-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .flow-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -315,31 +350,43 @@
 
         <div class="header">
             <h1>
-                🔥 Burn Rate Analysis
+                🔥 Burn Rate Analysis <span class="enhanced-badge">ENHANCED</span>
             </h1>
             <p>
-                Identify Google Ads campaigns wasting budget on unsupported territories. 
-                This analysis shows exactly which campaigns are attracting traffic from countries 
-                where you cannot provide services, allowing you to optimize targeting and reduce waste.
+                <strong>Enhanced with MQL→SQL validation tracking.</strong> 
+                This analysis shows Google Ads campaigns attracting traffic from unsupported territories, 
+                plus the complete conversion pipeline from Marketing Qualified Leads to Sales Qualified Leads.
             </p>
         </div>
 
         <div class="stats-grid" id="statsGrid">
             <div class="stat-card">
                 <div class="stat-value burn-rate" id="burnRateValue">--</div>
-                <div class="stat-label">Burn Rate</div>
+                <div class="stat-label">Burn Rate %</div>
             </div>
             <div class="stat-card">
                 <div class="stat-value waste-contacts" id="wasteContactsValue">--</div>
-                <div class="stat-label">Wasted Contacts</div>
+                <div class="stat-label">Wasted MQLs</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value total-contacts" id="totalContactsValue">--</div>
-                <div class="stat-label">Total Contacts</div>
+                <div class="stat-value total-contacts" id="totalMQLsValue">--</div>
+                <div class="stat-label">Total MQLs</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value territories-count" id="territoriesCountValue">--</div>
-                <div class="stat-label">Unsupported Countries</div>
+                <div class="stat-value validation-rate" id="validationRateValue">--</div>
+                <div class="stat-label">MQL→SQL Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value territories-count" id="sqlDealsValue">--</div>
+                <div class="stat-label">SQL Deals Created</div>
+            </div>
+        </div>
+
+        <!-- MQL Validation Summary -->
+        <div class="mql-validation-summary" id="mqlValidationSummary" style="display: none;">
+            <h3>🎯 MQL → SQL Validation Pipeline</h3>
+            <div class="validation-flow" id="validationFlow">
+                <!-- Will be populated by JavaScript -->
             </div>
         </div>
 
@@ -350,36 +397,42 @@
         <div class="main-content">
             <div class="section-header">
                 <h2 class="section-title">
-                    📊 Campaign Burn Rate Analysis
+                    📊 Enhanced Campaign Burn Rate Analysis
                 </h2>
                 <div class="filters">
+                    <select class="filter-select" id="analysisMode">
+                        <option value="pipeline">Pipeline Analysis</option>
+                        <option value="revenue">Revenue Analysis</option>
+                    </select>
                     <select class="filter-select" id="timeRange">
                         <option value="7">Last 7 days</option>
                         <option value="30" selected>Last 30 days</option>
                         <option value="90">Last 90 days</option>
                     </select>
-                    <button class="refresh-btn" onclick="loadBurnRateData()">
-                        🔄 Refresh
+                    <button class="refresh-btn" onclick="loadEnhancedBurnRateData()">
+                        🔄 Refresh Enhanced Data
                     </button>
                 </div>
             </div>
 
             <div id="loadingSpinner" class="loading">
-                <div>🔄 Loading burn rate analysis...</div>
+                <div>🔄 Loading enhanced burn rate analysis...</div>
             </div>
 
             <div id="errorContainer"></div>
+            <div id="successContainer"></div>
             <div id="debugInfo"></div>
 
             <table class="campaign-table" id="campaignTable" style="display: none;">
                 <thead>
                     <tr>
                         <th>Campaign Name</th>
-                        <th>Keywords</th>
-                        <th>Total Contacts</th>
+                        <th>Total MQLs</th>
+                        <th>SQLs Created</th>
+                        <th>Won Deals</th>
                         <th>Revenue</th>
-                        <th>Conversion Rate</th>
-                        <th>Unsupported Contacts</th>
+                        <th>MQL→SQL Rate</th>
+                        <th>Unsupported MQLs</th>
                         <th>Estimated Waste</th>
                     </tr>
                 </thead>
@@ -399,10 +452,12 @@
     <script>
         let burnRateChart;
 
-        async function loadBurnRateData() {
+        async function loadEnhancedBurnRateData() {
             const timeRange = document.getElementById('timeRange').value;
+            const analysisMode = document.getElementById('analysisMode').value;
             const loadingSpinner = document.getElementById('loadingSpinner');
             const errorContainer = document.getElementById('errorContainer');
+            const successContainer = document.getElementById('successContainer');
             const debugInfo = document.getElementById('debugInfo');
             const campaignTable = document.getElementById('campaignTable');
             
@@ -410,12 +465,29 @@
             loadingSpinner.style.display = 'block';
             campaignTable.style.display = 'none';
             errorContainer.innerHTML = '';
+            successContainer.innerHTML = '';
             debugInfo.innerHTML = '';
 
             try {
-                // Load territory analysis data first
-                console.log(`Loading territory data for ${timeRange} days...`);
-                const territoryResponse = await fetch(`/gads/api/territories?days=${timeRange}`);
+                console.log(`Loading enhanced data: ${timeRange} days, ${analysisMode} mode...`);
+
+                // Load MQL validation data first (this is the core enhancement)
+                const mqlResponse = await fetch(`/gads/analytics/mql-validation?days=${timeRange}&mode=${analysisMode}`);
+                
+                if (!mqlResponse.ok) {
+                    throw new Error(`MQL Validation API error: ${mqlResponse.status} ${mqlResponse.statusText}`);
+                }
+                
+                const mqlData = await mqlResponse.json();
+
+                if (!mqlData.success) {
+                    throw new Error(mqlData.error || 'Failed to load MQL validation data');
+                }
+
+                console.log('✅ MQL Validation data loaded:', mqlData);
+
+                // Load territory analysis data
+                const territoryResponse = await fetch(`/gads/analytics/territories?days=${timeRange}&mode=${analysisMode}`);
                 
                 if (!territoryResponse.ok) {
                     throw new Error(`Territory API error: ${territoryResponse.status} ${territoryResponse.statusText}`);
@@ -427,80 +499,130 @@
                     throw new Error(territoryData.error || 'Failed to load territory data');
                 }
 
-                console.log('Territory data loaded:', territoryData);
+                console.log('✅ Territory data loaded:', territoryData);
 
-                // Update stats
-                updateStats(territoryData);
+                // Update enhanced stats
+                updateEnhancedStats(mqlData, territoryData);
+                
+                // Show MQL validation summary
+                displayMQLValidationSummary(mqlData);
                 
                 // Update chart
-                updateBurnRateChart(territoryData);
+                updateEnhancedBurnRateChart(mqlData, territoryData);
                 
-                // Load campaign analysis 
-                await loadCampaignAnalysis(territoryData, timeRange);
+                // Load enhanced campaign analysis 
+                await loadEnhancedCampaignAnalysis(mqlData, territoryData, timeRange, analysisMode);
                 
                 // Show unsupported territories
                 displayUnsupportedTerritories(territoryData);
+
+                // Show success message
+                successContainer.innerHTML = `
+                    <div class="success">
+                        ✅ Enhanced burn rate analysis loaded successfully!<br>
+                        <small>Using schema-corrected queries with MQL→SQL validation tracking</small>
+                    </div>
+                `;
 
                 loadingSpinner.style.display = 'none';
                 campaignTable.style.display = 'table';
 
             } catch (error) {
-                console.error('Error loading burn rate data:', error);
+                console.error('❌ Error loading enhanced burn rate data:', error);
                 loadingSpinner.style.display = 'none';
                 
                 debugInfo.innerHTML = `
                     <div class="debug-info">
-                        🔍 <strong>Debug Information:</strong><br>
+                        🔍 <strong>Enhanced Debug Information:</strong><br>
                         Error: ${error.message}<br>
+                        Mode: ${analysisMode} analysis<br>
                         Time: ${new Date().toISOString()}<br>
-                        Endpoint tried: /gads/api/territories?days=${timeRange}<br>
                         <br>
-                        <strong>Available endpoints to test:</strong><br>
-                        • <a href="/gads/api/territories?days=30" target="_blank" style="color: #fff;">/gads/api/territories?days=30</a><br>
-                        • <a href="/gads/api/campaigns?days=30" target="_blank" style="color: #fff;">/gads/api/campaigns?days=30</a><br>
-                        • <a href="/gads/analytics/territory?days=30" target="_blank" style="color: #fff;">/gads/analytics/territory?days=30</a><br>
+                        <strong>Enhanced endpoints tested:</strong><br>
+                        • <a href="/gads/analytics/mql-validation?days=${timeRange}&mode=${analysisMode}" target="_blank" style="color: #fff;">/gads/analytics/mql-validation?days=${timeRange}&mode=${analysisMode}</a><br>
+                        • <a href="/gads/analytics/territories?days=${timeRange}&mode=${analysisMode}" target="_blank" style="color: #fff;">/gads/analytics/territories?days=${timeRange}&mode=${analysisMode}</a><br>
+                        • <a href="/gads/analytics/campaigns?days=${timeRange}&mode=${analysisMode}" target="_blank" style="color: #fff;">/gads/analytics/campaigns?days=${timeRange}&mode=${analysisMode}</a><br>
                     </div>
                 `;
                 
                 errorContainer.innerHTML = `
                     <div class="error">
-                        ❌ Error loading burn rate data: ${error.message}
+                        ❌ Error loading enhanced burn rate data: ${error.message}
                         <br><br>
-                        Check the debug information below for more details.
+                        This might be due to database schema issues or missing data.
+                        Check the debug information below for endpoint testing.
                     </div>
                 `;
             }
         }
 
-        function updateStats(data) {
-            const burnRate = data.burnRateSummary?.burnRatePercentage || '0';
-            const wasteContacts = data.burnRateSummary?.unsupportedContacts || 0;
-            const totalContacts = data.burnRateSummary?.totalContacts || 0;
-            const territoriesCount = data.burnRateSummary?.unsupportedTerritoriesCount || 0;
+        function updateEnhancedStats(mqlData, territoryData) {
+            // Enhanced stats from MQL validation data
+            const totalMQLs = mqlData.mql_stage?.total_mqls || 0;
+            const unsupportedMQLs = mqlData.mql_stage?.unsupported_mqls || 0;
+            const sqlDeals = mqlData.sql_validation?.total_deals_created || 0;
+            const validationRate = mqlData.sql_validation?.validation_rate_percentage || 0;
+            const burnRate = mqlData.mql_stage?.burn_rate_percentage || 0;
 
-            document.getElementById('burnRateValue').textContent = burnRate + '%';
-            document.getElementById('wasteContactsValue').textContent = wasteContacts;
-            document.getElementById('totalContactsValue').textContent = totalContacts;
-            document.getElementById('territoriesCountValue').textContent = territoriesCount;
+            document.getElementById('burnRateValue').textContent = burnRate.toFixed(1);
+            document.getElementById('wasteContactsValue').textContent = unsupportedMQLs;
+            document.getElementById('totalMQLsValue').textContent = totalMQLs;
+            document.getElementById('validationRateValue').textContent = validationRate.toFixed(1) + '%';
+            document.getElementById('sqlDealsValue').textContent = sqlDeals;
         }
 
-        function updateBurnRateChart(data) {
+        function displayMQLValidationSummary(mqlData) {
+            const summaryContainer = document.getElementById('mqlValidationSummary');
+            const flowContainer = document.getElementById('validationFlow');
+            
+            if (mqlData.success) {
+                const mqlStage = mqlData.mql_stage;
+                const sqlValidation = mqlData.sql_validation;
+                
+                flowContainer.innerHTML = `
+                    <div class="flow-step">
+                        <div class="flow-value">${mqlStage.total_mqls}</div>
+                        <div class="flow-label">Total MQLs</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-value">${mqlStage.supported_mqls}</div>
+                        <div class="flow-label">Supported Territory</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-value">${sqlValidation.total_deals_created}</div>
+                        <div class="flow-label">SQLs Created</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-value">${sqlValidation.won_deals}</div>
+                        <div class="flow-label">Won Deals</div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-value">${mqlStage.unsupported_mqls}</div>
+                        <div class="flow-label">Unsupported (Waste)</div>
+                    </div>
+                `;
+                
+                summaryContainer.style.display = 'block';
+            }
+        }
+
+        function updateEnhancedBurnRateChart(mqlData, territoryData) {
             const ctx = document.getElementById('burnRateChart').getContext('2d');
             
             if (burnRateChart) {
                 burnRateChart.destroy();
             }
 
-            const totalContacts = data.burnRateSummary?.totalContacts || 0;
-            const unsupportedContacts = data.burnRateSummary?.unsupportedContacts || 0;
-            const supportedContacts = totalContacts - unsupportedContacts;
+            const totalMQLs = mqlData.mql_stage?.total_mqls || 0;
+            const unsupportedMQLs = mqlData.mql_stage?.unsupported_mqls || 0;
+            const supportedMQLs = totalMQLs - unsupportedMQLs;
             
             burnRateChart = new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     labels: ['Supported Territories', 'Unsupported (Waste)'],
                     datasets: [{
-                        data: [supportedContacts, unsupportedContacts],
+                        data: [supportedMQLs, unsupportedMQLs],
                         backgroundColor: ['#2ecc71', '#e74c3c'],
                         borderWidth: 3,
                         borderColor: '#fff'
@@ -511,7 +633,7 @@
                     plugins: {
                         title: {
                             display: true,
-                            text: `Contact Distribution: ${totalContacts} Total Contacts`,
+                            text: `MQL Distribution: ${totalMQLs} Total MQLs (Enhanced)`,
                             font: { size: 16, weight: 'bold' }
                         },
                         legend: {
@@ -523,19 +645,19 @@
             });
         }
 
-        async function loadCampaignAnalysis(territoryData, timeRange) {
+        async function loadEnhancedCampaignAnalysis(mqlData, territoryData, timeRange, analysisMode) {
             try {
-                console.log(`Loading campaign data for ${timeRange} days...`);
+                console.log(`Loading enhanced campaign data: ${timeRange} days, ${analysisMode} mode...`);
                 
-                // Use the correct API endpoint from your index.js routes
-                const campaignResponse = await fetch(`/gads/api/campaigns?days=${timeRange}`);
+                // Use the enhanced campaign API
+                const campaignResponse = await fetch(`/gads/analytics/campaigns?days=${timeRange}&mode=${analysisMode}`);
                 
                 if (!campaignResponse.ok) {
                     throw new Error(`Campaign API error: ${campaignResponse.status} ${campaignResponse.statusText}`);
                 }
                 
                 const campaignData = await campaignResponse.json();
-                console.log('Campaign data loaded:', campaignData);
+                console.log('✅ Enhanced campaign data loaded:', campaignData);
 
                 if (!campaignData.success) {
                     throw new Error(campaignData.error || 'Failed to load campaign data');
@@ -548,70 +670,79 @@
                 if (campaigns.length === 0) {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td colspan="7" style="text-align: center; padding: 30px; color: #7f8c8d;">
+                        <td colspan="8" style="text-align: center; padding: 30px; color: #7f8c8d;">
                             No campaign data available for this period<br>
-                            <small>Make sure HubSpot sync has run and there are contacts with PAID_SEARCH source</small>
+                            <small>Mode: ${analysisMode} | Range: ${timeRange} days</small>
                         </td>
                     `;
                     tableBody.appendChild(row);
                     return;
                 }
 
-                // Calculate overall burn rate from territory data
-                const burnRatePercentage = territoryData.burnRateSummary?.burnRatePercentage || 0;
-                const burnRateDecimal = parseFloat(burnRatePercentage) / 100;
+                // Calculate burn rate from MQL data
+                const burnRateDecimal = (mqlData.mql_stage?.burn_rate_percentage || 0) / 100;
 
                 campaigns.forEach(campaign => {
-                    // Calculate unsupported contacts for this campaign based on actual burn rate
-                    const totalContacts = campaign.contacts || 0;
-                    const unsupportedContacts = Math.round(totalContacts * burnRateDecimal);
-                    const estimatedWastePerContact = 25; // Estimated cost per contact
-                    const estimatedWaste = (unsupportedContacts * estimatedWastePerContact).toFixed(0);
+                    // Enhanced calculations using MQL validation data
+                    const totalMQLs = campaign.contacts || 0;
+                    const sqlDeals = campaign.deals || 0;
+                    const wonDeals = campaign.won_deals || 0;
+                    const revenue = campaign.revenue || 0;
+                    const mqlToSqlRate = campaign.mql_to_sql_rate || campaign.conversion_rate || 0;
+                    
+                    // Calculate unsupported MQLs based on actual burn rate
+                    const unsupportedMQLs = Math.round(totalMQLs * burnRateDecimal);
+                    const estimatedWastePerMQL = 30; // Estimated cost per MQL
+                    const estimatedWaste = (unsupportedMQLs * estimatedWastePerMQL).toFixed(0);
                     
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>
                             <div style="font-weight: bold;">${campaign.name || 'Unknown Campaign'}</div>
-                            <div class="targeting-info">From HubSpot: hs_analytics_source_data_1</div>
+                            <div class="targeting-info">Enhanced: ${analysisMode} analysis</div>
                         </td>
                         <td>
-                            <div>${campaign.keywords || 'Not specified'}</div>
-                            <div class="targeting-info">From HubSpot: hs_analytics_source_data_2</div>
+                            <div style="font-weight: bold; color: #3498db;">${totalMQLs}</div>
+                            <div class="targeting-info">Marketing Qualified</div>
                         </td>
                         <td>
-                            <div style="font-weight: bold; color: #3498db;">${totalContacts}</div>
-                            <div class="targeting-info">Total contacts</div>
+                            <div style="font-weight: bold; color: #9b59b6;">${sqlDeals}</div>
+                            <div class="targeting-info">Sales Qualified</div>
                         </td>
                         <td>
-                            <div style="font-weight: bold; color: #27ae60;">$${campaign.revenue ? parseFloat(campaign.revenue).toFixed(2) : '0.00'}</div>
-                            <div class="targeting-info">${campaign.deals || 0} deals</div>
+                            <div style="font-weight: bold; color: #27ae60;">${wonDeals}</div>
+                            <div class="targeting-info">Closed Won</div>
                         </td>
                         <td>
-                            <div style="font-weight: bold;">${campaign.conversionRate || '0'}%</div>
-                            <div class="targeting-info">Contacts to deals</div>
+                            <div style="font-weight: bold; color: #27ae60;">€${revenue.toFixed(2)}</div>
+                            <div class="targeting-info">Total Revenue</div>
                         </td>
                         <td>
-                            <div class="unsupported-contacts">${unsupportedContacts}</div>
-                            <div class="targeting-info">${burnRatePercentage}% of ${totalContacts}</div>
+                            <div style="font-weight: bold;">${mqlToSqlRate}%</div>
+                            <div class="targeting-info">Validation Rate</div>
                         </td>
                         <td>
-                            <div class="spend-amount">$${estimatedWaste}</div>
-                            <div class="targeting-info">Est: ${unsupportedContacts} × $${estimatedWastePerContact}</div>
+                            <div class="unsupported-contacts">${unsupportedMQLs}</div>
+                            <div class="targeting-info">${(burnRateDecimal * 100).toFixed(1)}% burn rate</div>
+                        </td>
+                        <td>
+                            <div class="spend-amount">€${estimatedWaste}</div>
+                            <div class="targeting-info">Est: ${unsupportedMQLs} × €${estimatedWastePerMQL}</div>
                         </td>
                     `;
                     tableBody.appendChild(row);
                 });
 
             } catch (error) {
-                console.error('Error loading campaign data:', error);
+                console.error('❌ Error loading enhanced campaign data:', error);
                 
                 const tableBody = document.getElementById('campaignTableBody');
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td colspan="7" style="text-align: center; padding: 30px; color: #e74c3c;">
-                        ❌ Error loading campaign data: ${error.message}
+                    <td colspan="8" style="text-align: center; padding: 30px; color: #e74c3c;">
+                        ❌ Error loading enhanced campaign data: ${error.message}
                         <br><br>
-                        <small>Endpoint tried: /gads/api/campaigns?days=${timeRange}</small>
+                        <small>Enhanced endpoint: /gads/analytics/campaigns?days=${timeRange}&mode=${analysisMode}</small>
                     </td>
                 `;
                 tableBody.appendChild(row);
@@ -633,8 +764,9 @@
                     </div>
                     <p style="margin-top: 15px; color: #7f8c8d;">
                         These ${unsupportedTerritory.rawTerritories.length} countries generated 
-                        <strong>${unsupportedTerritory.contacts} contacts</strong> with 
+                        <strong>${unsupportedTerritory.contacts} MQLs</strong> with 
                         <strong>${unsupportedTerritory.deals} deals</strong> - indicating ${unsupportedTerritory.deals === 0 ? 'complete waste' : 'poor performance'} of ad spend.
+                        <br><small><strong>Enhanced:</strong> Now tracking the complete MQL→SQL validation pipeline.</small>
                     </p>
                 `;
             } else {
@@ -642,20 +774,20 @@
                     <p style="color: #7f8c8d;">
                         No unsupported territory data found in the current dataset.
                         <br>
-                        <small>This might indicate that the country classification system needs to be updated.</small>
+                        <small>Enhanced: This might indicate that the country classification system needs to be updated.</small>
                     </p>
                 `;
             }
         }
 
-        // Load data on page load
+        // Load enhanced data on page load
         document.addEventListener('DOMContentLoaded', () => {
-            console.log('Burn Rate Analysis page loaded');
-            loadBurnRateData();
+            console.log('🔥 Enhanced Burn Rate Analysis page loaded');
+            loadEnhancedBurnRateData();
         });
         
         // Auto-refresh every 5 minutes
-        setInterval(loadBurnRateData, 5 * 60 * 1000);
+        setInterval(loadEnhancedBurnRateData, 5 * 60 * 1000);
     </script>
 </body>
 </html>
